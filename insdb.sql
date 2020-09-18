@@ -28,15 +28,14 @@ INSERT INTO `Adminsters` (`empID`, `siteCode`) VALUES (0266, 383083);
 INSERT INTO `Adminsters` (`empID`, `siteCode`) VALUES (12555, 291723);
 
 /*insertion for AirTimePackage, 5 records*/
-INSERT INTO `AirtimePackage` (`packageID`, `startDate`, `lastDate`, `frequency`, `videoCode`) VALUES(18278, 'economy', '02.25.2019', '09.15.2019', 1287.77, 29734);
+INSERT INTO `AirtimePackage` (`packageID`, `startDate`, `lastDate`, `frequency`, `videoCode`) VALUES(698541, 'economy', '2019-29-11', '2020-02-18', 1287.77, 29734);
+INSERT INTO `AirtimePackage` (`packageID`, `startDate`, `lastDate`, `frequency`, `videoCode`) VALUES(6584, 'whole day', '2016-03-31', '2018-04-25', 120387.8, 102378);
+INSERT INTO `AirtimePackage` (`packageID`, `startDate`, `lastDate`,`frequency`, `videoCode`) VALUES
+(341589, 'golden hours', '2016-04-25', '2020-12-29', 1978.79, 3408);
 INSERT INTO `AirtimePackage` (`packageID`, `startDate`, `lastDate`, `frequency`, `videoCode`) VALUES
-(18278, 'whole day', '02.25.2016', '12.25.2018', 120387.8, 102378);
+(694655, 'economy', '1978-07-02', '2020-05-22', 2378.23, 302822);
 INSERT INTO `AirtimePackage` (`packageID`, `startDate`, `lastDate`, `frequency`, `videoCode`) VALUES
-(18278, 'golden hours', '04.25.2016', '12.29.2020', 1978.79, 3408);
-INSERT INTO `AirtimePackage` (`packageID`, `startDate`, `lastDate`, `frequency`, `videoCode`) VALUES
-(18278, 'economy', '07.02.1987', '05.22.2020', 2378.23, 302822);
-INSERT INTO `AirtimePackage` (`packageID`, `startDate`, `lastDate`, `frequency`, `videoCode`) VALUES
-(18278, 'economy', '11.25.1999', '09.18.2020', 91783.02, 209709);
+(18278, 'economy', '1999-11-25', '2020-08-19', 91783.02, 209709);
 
 /*insertion for Broadcasts, 5 records*/
 INSERT INTO `Broadcasts` (`videoCode`, `siteCode`) VALUES (567789, 798980);
