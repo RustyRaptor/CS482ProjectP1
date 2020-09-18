@@ -1,8 +1,9 @@
-/*Brianna Moffett
-//Ziad Arafat
-//Brandon Lujan
-//CS482
-*/09.18.2020
+/* Brianna Moffett
+   Ziad Arafat
+   Brandon Lujan
+   CS482
+   09.18.2020
+ */
 
 /*insertion for Administrator table, 5 records*/
 INSERT INTO `Administrator` (`empId`, `name`, `gender`) VALUES (9, 'Francesco Hickle I', 'o');
