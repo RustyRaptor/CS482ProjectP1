@@ -27,6 +27,17 @@ INSERT INTO `Adminsters` (`empID`, `siteCode`) VALUES (23255, 30840);
 INSERT INTO `Adminsters` (`empID`, `siteCode`) VALUES (0266, 383083);
 INSERT INTO `Adminsters` (`empID`, `siteCode`) VALUES (12555, 291723);
 
+/*insertion for AirTimePackage, 5 records*/
+INSERT INTO `AirtimePackage` (`packageID`, `startDate`, `lastDate`, `frequency`, `videoCode`) VALUES(18278, 'economy', '02.25.2019', '09.15.2019', 1287.77, 29734);
+INSERT INTO `AirtimePackage` (`packageID`, `startDate`, `lastDate`, `frequency`, `videoCode`) VALUES
+(18278, 'whole day', '02.25.2016', '12.25.2018', 120387.8, 102378);
+INSERT INTO `AirtimePackage` (`packageID`, `startDate`, `lastDate`, `frequency`, `videoCode`) VALUES
+(18278, 'golden hours', '04.25.2016', '12.29.2020', 1978.79, 3408);
+INSERT INTO `AirtimePackage` (`packageID`, `startDate`, `lastDate`, `frequency`, `videoCode`) VALUES
+(18278, 'economy', '07.02.1987', '05.22.2020', 2378.23, 302822);
+INSERT INTO `AirtimePackage` (`packageID`, `startDate`, `lastDate`, `frequency`, `videoCode`) VALUES
+(18278, 'economy', '11.25.1999', '09.18.2020', 91783.02, 209709);
+
 /*insertion for Broadcasts, 5 records*/
 INSERT INTO `Broadcasts` (`videoCode`, `siteCode`) VALUES (567789, 798980);
 INSERT INTO `Broadcasts` (`videoCode`, `siteCode`) VALUES (85779, 009982);
@@ -42,11 +53,11 @@ INSERT INTO `Client` (`clientID`, `name`, `phone`, `address`) VALUES (43675339, 
 INSERT INTO `Client` (`clientID`, `name`, `phone`, `address`) VALUES (648587653, 'Mrs. Natalie Schumm', '(329)593-1989', '541 Schroeder Light Suite 060\nNorth Janessatown, MI 97039');
 
 /*insertion for DigitalDisplay table, 5 records*/
-INSERT INTO `DigitalDisplay` (`serialNo`, `schedulerSystem`, `modelNo`) VALUES (8220, 564783, 67840);
-INSERT INTO `DigitalDisplay` (`serialNo`, `schedulerSystem`, `modelNo`) VALUES (9577, 927735, 82779);
-INSERT INTO `DigitalDisplay` (`serialNo`, `schedulerSystem`, `modelNo`) VALUES (5786, 982377, 98823);
-INSERT INTO `DigitalDisplay` (`serialNo`, `schedulerSystem`, `modelNo`) VALUES (0967, 508238, 76089);
-INSERT INTO `DigitalDisplay` (`serialNo`, `schedulerSystem`, `modelNo`) VALUES (1433, 847732, 03278);
+INSERT INTO `DigitalDisplay` (`serialNo`, `schedulerSystem`, `modelNo`) VALUES (8220, 'Random', 67840);
+INSERT INTO `DigitalDisplay` (`serialNo`, `schedulerSystem`, `modelNo`) VALUES (9577, 'Random', 82779);
+INSERT INTO `DigitalDisplay` (`serialNo`, `schedulerSystem`, `modelNo`) VALUES (5786, 'Smart', 98823);
+INSERT INTO `DigitalDisplay` (`serialNo`, `schedulerSystem`, `modelNo`) VALUES (0967, 'Virtue', 76089);
+INSERT INTO `DigitalDisplay` (`serialNo`, `schedulerSystem`, `modelNo`) VALUES (1433, 'Virtue', 03278);
 
 /*insertion for Model table, 5 records*/
 INSERT INTO `Model` (`modelNo`, `width`, `height`, `weight`, `depth`, `screenSize`) VALUES (24081, 8068.00, 209.00, 9999.99, 4966.00, 7.00);
@@ -61,6 +72,13 @@ INSERT INTO `Salesman` (`empId`, `name`, `gender`) VALUES (89, 'Ryley Mosciski',
 INSERT INTO `Salesman` (`empId`, `name`, `gender`) VALUES (92, 'Delmer Russel', 'o');
 INSERT INTO `Salesman` (`empId`, `name`, `gender`) VALUES (475, 'Amari Hartmann', 'f');
 INSERT INTO `Salesman` (`empId`, `name`, `gender`) VALUES (4507, 'Prof. Robbie Halvorson II', 'm');
+
+/*insertion for Site, 5 records*/
+INSERT INTO `Site` (`siteCode`, `type`, `address`, `phone`) VALUES ('12978', 'bar', '7 Nicholls Ave. Muskogee, OJ 74403', '(711) 265-9193');
+INSERT INTO `Site` (`siteCode`, `type`, `address`, `phone`) VALUES ('129387', 'bar', '963 Lees Creek St. Streamwood, IL 60107', '(675) 844-7400');
+INSERT INTO `Site` (`siteCode`, `type`, `address`, `phone`) VALUES ('459087', 'restaurant', '8436 Warren Street Middletown, CT 06457', '(266) 855-0710');
+INSERT INTO `Site` (`siteCode`, `type`, `address`, `phone`) VALUES ('03449', 'bar', '7916 S. Marvon St. Dracut, MA 01826', '(514) 531-8471');
+INSERT INTO `Site` (`siteCode`, `type`, `address`, `phone`) VALUES ('6456', 'restaurant', '219 North Dunabr St. Fremont, OH 43420', '(966) 291-5045');
 
 /*insertion for TechnicalSupport table, 5 records*/
 INSERT INTO `TechnicalSupport` (`empId`, `name`, `gender`) VALUES (8, 'Arno Hyatt', 'm');
