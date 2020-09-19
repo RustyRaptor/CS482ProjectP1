@@ -9,7 +9,7 @@
 INSERT INTO `Administrator` (`empId`, `name`, `gender`) VALUES (45678875, 'Francesco Hickle I', 'o');
 INSERT INTO `Administrator` (`empId`, `name`, `gender`) VALUES (8976876, 'Miss Alycia Okuneva III', 'o');
 INSERT INTO `Administrator` (`empId`, `name`, `gender`) VALUES (9870987, 'Nyasia Toy', 'f');
-INSERT INTO `Administrator` (`empId`, `name`, `gender`) VALUES (89709870987, 'Joshua Friesen IV', 'm');
+INSERT INTO `Administrator` (`empId`, `name`, `gender`) VALUES (8970987, 'Joshua Friesen IV', 'm');
 INSERT INTO `Administrator` (`empId`, `name`, `gender`) VALUES (678686, 'Ms. Jodie Blanda DDS', 'f');
 
 /*insertion for AdmWorkHours, 5 records*/
@@ -67,8 +67,8 @@ INSERT INTO `Model` (`modelNo`, `width`, `height`, `weight`, `depth`, `screenSiz
 
 /*insertion for Salesman table, 5 records*/
 INSERT INTO `Salesman` (`empId`, `name`, `gender`) VALUES (786567, 'Frederic Graham', 'o');
-INSERT INTO `Salesman` (`empId`, `name`, `gender`) VALUES (876987698, 'Ryley Mosciski', 'f');
-INSERT INTO `Salesman` (`empId`, `name`, `gender`) VALUES (9870987097, 'Delmer Russel', 'o');
+INSERT INTO `Salesman` (`empId`, `name`, `gender`) VALUES (876698, 'Ryley Mosciski', 'f');
+INSERT INTO `Salesman` (`empId`, `name`, `gender`) VALUES (987097, 'Delmer Russel', 'o');
 INSERT INTO `Salesman` (`empId`, `name`, `gender`) VALUES (689776, 'Amari Hartmann', 'f');
 INSERT INTO `Salesman` (`empId`, `name`, `gender`) VALUES (6789467, 'Prof. Robbie Halvorson II', 'm');
 
@@ -80,11 +80,11 @@ INSERT INTO `Site` (`siteCode`, `type`, `address`, `phone`) VALUES ('03449', 'ba
 INSERT INTO `Site` (`siteCode`, `type`, `address`, `phone`) VALUES ('6456', 'restaurant', '219 North Dunabr St. Fremont, OH 43420', '(966) 291-5045');
 
 /*insertion for TechnicalSupport table, 5 records*/
-INSERT INTO `TechnicalSupport` (`empId`, `name`, `gender`) VALUES (4567876333, 'Arno Hyatt', 'm');
+INSERT INTO `TechnicalSupport` (`empId`, `name`, `gender`) VALUES (4567833, 'Arno Hyatt', 'm');
 INSERT INTO `TechnicalSupport` (`empId`, `name`, `gender`) VALUES (7658765, 'Prof. Alison Cartwright', 'f');
-INSERT INTO `TechnicalSupport` (`empId`, `name`, `gender`) VALUES (97658765, 'Kenny Jaskolski II', 'f');
+INSERT INTO `TechnicalSupport` (`empId`, `name`, `gender`) VALUES (9765765, 'Kenny Jaskolski II', 'f');
 INSERT INTO `TechnicalSupport` (`empId`, `name`, `gender`) VALUES (879876, 'Lonny Murazik', 'f');
-INSERT INTO `TechnicalSupport` (`empId`, `name`, `gender`) VALUES (77678999, 'Elyssa Walter', 'f');
+INSERT INTO `TechnicalSupport` (`empId`, `name`, `gender`) VALUES (7767999, 'Elyssa Walter', 'f');
 
 /*insertion for Video table, 5 records*/
 INSERT INTO `Video` (`videoCode`, `videoLength`) VALUES (0, 22);
