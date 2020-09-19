@@ -1,0 +1,15 @@
+drop table Locates;
+drop table Purchases;
+drop table Specializes;
+drop table Administers;
+drop table Broadcasts;
+drop table AdmWorkHours;
+drop table AirtimePackage;
+drop table Salesman;
+drop table Administrator;
+drop table TechnicalSupport;
+drop table Client;
+drop table DigitalDisplay;
+drop table Site;
+drop table Model;
+drop table Video;
