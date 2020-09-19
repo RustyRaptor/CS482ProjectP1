@@ -63,11 +63,11 @@ INSERT INTO `Salesman` (`empId`, `name`, `gender`) VALUES (5004, 'Amari Hartmann
 INSERT INTO `Salesman` (`empId`, `name`, `gender`) VALUES (5005, 'Prof. Robbie Halvorson II', 'm');
 
 /*insertion for AirTimePackage, 5 records*/
-INSERT INTO `AirtimePackage` (`packageId`, `startDate`, `lastDate`, `frequency`, `videoCode`) VALUES (6001, 'economy', '2019-29-11', '2020-02-18', 1287.77, 29734);
-INSERT INTO `AirtimePackage` (`packageId`, `startDate`, `lastDate`, `frequency`, `videoCode`) VALUES (6002, 'whole day', '2016-03-31', '2018-04-25', 120387.8, 102378);
-INSERT INTO `AirtimePackage` (`packageId`, `startDate`, `lastDate`, `frequency`, `videoCode`) VALUES (6003, 'golden hours', '2016-04-25', '2020-12-29', 1978.79, 3408);
-INSERT INTO `AirtimePackage` (`packageId`, `startDate`, `lastDate`, `frequency`, `videoCode`) VALUES (6004, 'economy', '1978-07-02', '2020-05-22', 2378.23, 302822);
-INSERT INTO `AirtimePackage` (`packageId`, `startDate`, `lastDate`, `frequency`, `videoCode`) VALUES (6005, 'economy', '1999-11-25', '2020-08-19', 91783.02, 209709);
+INSERT INTO `AirtimePackage` (`packageId`, `class`, `startDate`, `lastDate`, `frequency`, `videoCode`) VALUES (6001, 'economy', '2019-29-11', '2020-02-18', 1287.77, 29734);
+INSERT INTO `AirtimePackage` (`packageId`, `class`, `startDate`, `lastDate`, `frequency`, `videoCode`) VALUES (6002, 'whole day', '2016-03-31', '2018-04-25', 120387.8, 102378);
+INSERT INTO `AirtimePackage` (`packageId`, `class`, `startDate`, `lastDate`, `frequency`, `videoCode`) VALUES (6003, 'golden hours', '2016-04-25', '2020-12-29', 1978.79, 3408);
+INSERT INTO `AirtimePackage` (`packageId`, `class`, `startDate`, `lastDate`, `frequency`, `videoCode`) VALUES (6004, 'economy', '1978-07-02', '2020-05-22', 2378.23, 302822);
+INSERT INTO `AirtimePackage` (`packageId`, `class`, `startDate`, `lastDate`, `frequency`, `videoCode`) VALUES (6005, 'economy', '1999-11-25', '2020-08-19', 91783.02, 209709);
 
 /*insertion for AdmWorkHours, 5 records*/
 INSERT INTO `AdmWorkHours` (`empId`, `day`, `hours`) VALUES (1, '2020.08.18', 35.8);
