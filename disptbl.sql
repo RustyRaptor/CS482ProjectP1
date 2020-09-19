@@ -1,0 +1,15 @@
+desc Locates;
+desc Purchases;
+desc Specializes;
+desc Administers;
+desc Broadcasts;
+desc AdmWorkHours;
+desc AirtimePackage;
+desc Salesman;
+desc Administrator;
+desc TechnicalSupport;
+desc Client;
+desc DigitalDisplay;
+desc Site;
+desc Model;
+desc Video;
