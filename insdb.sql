@@ -99,11 +99,11 @@ INSERT INTO `Specializes` (`empId`, `modelNo`) VALUES ( 9, '1004');
 INSERT INTO `Specializes` (`empId`, `modelNo`) VALUES ( 10, '1005');
 
 /*insertion for Purchases table, 5 records*/
-INSERT INTO `Purchases` (`clientId`, `empId`, `packageId`) VALUES ( 4001, 5001, 6001 );
-INSERT INTO `Purchases` (`clientId`, `empId`, `packageId`) VALUES ( 4002, 5002, 6002 );
-INSERT INTO `Purchases` (`clientId`, `empId`, `packageId`) VALUES ( 4003, 5003, 6003 );
-INSERT INTO `Purchases` (`clientId`, `empId`, `packageId`) VALUES ( 4004, 5004, 6004 );
-INSERT INTO `Purchases` (`clientId`, `empId`, `packageId`) VALUES ( 4005, 5005, 6005 );
+INSERT INTO `Purchases` (`clientId`, `empId`, `packageId`, `commissionRate`) VALUES ( 4001, 5001, 6001, 27.87 );
+INSERT INTO `Purchases` (`clientId`, `empId`, `packageId`, `commissionRate`) VALUES ( 4002, 5002, 6002, 63.87 );
+INSERT INTO `Purchases` (`clientId`, `empId`, `packageId`, `commissionRate`) VALUES ( 4003, 5003, 6003, 69.56 );
+INSERT INTO `Purchases` (`clientId`, `empId`, `packageId`, `commissionRate`) VALUES ( 4004, 5004, 6004, 55.45 );
+INSERT INTO `Purchases` (`clientId`, `empId`, `packageId`, `commissionRate`) VALUES ( 4005, 5005, 6005, 87.87 );
 
 /*insertion for Locates table, 5 records*/
 INSERT INTO `Locates` (`serialNo`, `siteCode`) VALUES ( 9001, 3001 );
