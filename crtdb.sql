@@ -45,11 +45,11 @@ create table DigitalDisplay (
 
 # Creating table for client.
 create table Client (
-	clientID	int unique,
+	clientId	int unique,
     name		varchar(40),
     phone		varchar(16),
     address		varchar(100),
-    primary key (clientID)
+    primary key (clientId)
 );
 
 # Creating table for technical support.
