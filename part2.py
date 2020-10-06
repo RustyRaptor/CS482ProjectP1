@@ -1,5 +1,6 @@
 import mysql.connector
 from mysql.connector import Error
+import sys
 
 
 def create_connection(host_name, user_name, user_password):
@@ -28,11 +29,15 @@ def create_connection(host_name, user_name, user_password):
 
     return connection
 
+
 # This initiates the connection to the DB on the CS machines.
 # To use on your own instance replace the user_name and insert a password
-# DO NOT push this file to github with your password in here. Make sure you remove it first. 
+# DO NOT push this file to github with your password in here. Make sure you remove it first.
 connection = create_connection("dbclass.cs.nmsu.edu", "zarafat", "")
 
 
+# Command line arguments can be passed and read from sys.argv as a python list of strings
 if __name__ == "__main__":
-    pass
+    print(f"Arguments count: {len(sys.argv)}")
+    for i, arg in enumerate(sys.argv):
+        print(f"Argument {i:>6}: {arg}")
