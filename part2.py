@@ -35,12 +35,15 @@ def create_connection(host_name: str, user_name: str, user_password: str,
     return connection_obj
 
 
-def execute_query(connection_obj: mysql.connector.MySQLConnection, query: str) -> List[tuple]:
+def execute_query(connection_obj: mysql.connector.MySQLConnection, query: str, param_tuple: tuple) -> List[tuple]:
     """
     Executes a given SQL query and returns the result
     Args:
         connection_obj: The MySqlConnection object we created
-        query: A string containing a valid SQL Query
+        query: A string containing a valid SQL Query and optionally formatter
+        strings %s for where the parameters in the param_tuple will go
+        param_tuple: A tuple of the parameters to go into the query.
+        Pass empty tuple if there are no params.
 
     Returns:
         The result of the query we run as a List of tuples
@@ -49,9 +52,9 @@ def execute_query(connection_obj: mysql.connector.MySQLConnection, query: str) -
     """
 
     result = "QUERY FAILED"
-    cursor = connection_obj.cursor()
+    cursor = connection_obj.cursor(prepared=True)
     try:
-        cursor.execute(query)
+        cursor.execute(query, param_tuple)
         result = cursor.fetchall()
         cursor.close()
         connection_obj.commit()
