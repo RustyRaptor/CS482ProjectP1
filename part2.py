@@ -63,28 +63,28 @@ def execute_query(connection_obj: mysql.connector.MySQLConnection, query: str) -
 
 
 # Functions for each question
-def question_1(connection):
+def question_1(connection, args: List):
         print("This is the answer to q1")
 
-def question_2(connection):
+def question_2(connection, args: List):
         print("This is the answer to q2")
 
-def question_3(connection):
+def question_3(connection, args: List):
         print("This is the answer to q3")
 
-def question_4(connection):
+def question_4(connection, args: List):
         print("This is the answer to q4")
 
-def question_5(connection):
+def question_5(connection, args: List):
         print("This is the answer to q5")
 
-def question_6(connection):
+def question_6(connection, args: List):
         print("This is the answer to q6")
 
-def question_7(connection):
+def question_7(connection, args: List):
         print("This is the answer to q7")
 
-def question_8(connection):
+def question_8(connection, args: List):
         print("This is the answer to q8")
 
 q_dict = {
@@ -114,10 +114,7 @@ if __name__ == "__main__":
     query_result = execute_query(connection, "SELECT * FROM Salesman;")
     print(query_result)
 
-    for i in sys.argv:
-
-        try:
-            q_dict[str(i)](connection)
-        except KeyError:
-            if i != "part2.py":
-                print("Invalid question number", i)
+    question = sys.argv[1]
+    other_args = sys.argv[2:]
+    
+    q_dict[question](connection, other_args)
