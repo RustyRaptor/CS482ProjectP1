@@ -62,11 +62,50 @@ def execute_query(connection_obj: mysql.connector.MySQLConnection, query: str) -
     return result
 
 
+# Functions for each question
+def question_1(connection):
+        print("This is the answer to q1")
+
+def question_2(connection):
+        print("This is the answer to q2")
+
+def question_3(connection):
+        print("This is the answer to q3")
+
+def question_4(connection):
+        print("This is the answer to q4")
+
+def question_5(connection):
+        print("This is the answer to q5")
+
+def question_6(connection):
+        print("This is the answer to q6")
+
+def question_7(connection):
+        print("This is the answer to q7")
+
+def question_8(connection):
+        print("This is the answer to q8")
+
+q_dict = {
+        "1": question_1,
+        "2": question_2,
+        "3": question_3,
+        "4": question_4,
+        "5": question_5,
+        "6": question_6,
+        "7": question_7,
+        "8": question_8
+}
+
 # Command line arguments can be passed and read from sys.argv as a python list of strings
 if __name__ == "__main__":
     print(f"Arguments count: {len(sys.argv)}")
     for i, arg in enumerate(sys.argv):
         print(f"Argument {i:>6}: {arg}")
+    
+
+
 
     # This initiates the connection to the DB on the CS machines.
     # To use on your own instance replace the user_name and insert a password
@@ -74,3 +113,11 @@ if __name__ == "__main__":
     connection = create_connection("dbclass.cs.nmsu.edu", "zarafat", "Randomhack123_", "zarafat_482502fa20")
     query_result = execute_query(connection, "SELECT * FROM Salesman;")
     print(query_result)
+
+    for i in sys.argv:
+
+        try:
+            q_dict[str(i)](connection)
+        except KeyError:
+            if i != "part2.py":
+                print("Invalid question number", i)
