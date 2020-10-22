@@ -51,17 +51,25 @@ def execute_query(connection_obj: mysql.connector.MySQLConnection, query: str, p
         an error if something went wrong with the connection or query.
     """
 
-    result = "QUERY FAILED"
-    cursor = connection_obj.cursor(prepared=True)
+    print(param_tuple)
+    print(query)
+
+    result = "NO RESULT"
+    cursor = connection_obj.cursor()
     try:
-        cursor.execute(query, param_tuple)
-        result = cursor.fetchall()
+        cursor.execute(query, params=param_tuple)
+        try:
+            result = cursor.fetchall()
+        except mysql.connector.InterfaceError:
+            pass
         cursor.close()
         connection_obj.commit()
 
         print("Query executed successfully")
     except Error as e:
         print(f"The error '{e}' occurred")
+        print(cursor.statement)
+
     return result
 
 
@@ -114,7 +122,17 @@ if __name__ == "__main__":
     # To use on your own instance replace the user_name and insert a password
     # DO NOT push this file to github with your password in here. Make sure you remove it first.
     connection = create_connection("dbclass.cs.nmsu.edu", "zarafat", "Randomhack123_", "zarafat_482502fa20")
-    query_result = execute_query(connection, "SELECT * FROM Salesman;")
+
+    mysql.connector.paramstyle = "format"
+
+    print(mysql.connector.paramstyle)
+
+    # Test a simple select statement
+    query_result = execute_query(connection, 'SELECT * FROM Salesman;', ())
+    print(query_result)
+
+    # This will insert data to test the prepared statement
+    query_result = execute_query(connection, 'INSERT INTO Video (VideoCode, videoLength) VALUES (%s, %s);', (2006, 43))
     print(query_result)
 
     question = sys.argv[1]
