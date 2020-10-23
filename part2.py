@@ -107,6 +107,9 @@ def execute_query(connection_obj: mysql.connector.MySQLConnection, query: str, p
 # Functions for each question
 def question_1(connection, args: List):
         print("This is the answer to q1")
+        #execute_query(connection, 'INSERT INTO `Site` (`siteCode`, `type`, `address`, `phone`) VALUES (%s, %s, %s, %s);',(2999, 'bar', '1700 E University Ave. Las Cruces, NM 88003', '(123) 456-7890'))
+        results = execute_query(connection, 'SELECT * FROM Site WHERE address LIKE \%%s\%;', (*other_args,))
+        print(results);
 
 def question_2(connection, args: List):
         print("This is the answer to q2")
@@ -160,12 +163,12 @@ if __name__ == "__main__":
     print(mysql.connector.paramstyle)
 
     # Test a simple select statement
-    query_result = execute_query(connection, 'SELECT * FROM Salesman;', ())
-    print(query_result)
+    #query_result = execute_query(connection, 'SELECT * FROM Salesman;', ())
+    #print(query_result)
 
     # This will insert data to test the prepared statement
-    query_result = execute_query(connection, 'INSERT INTO Video (VideoCode, videoLength) VALUES (%s, %s);', (2006, 43))
-    print(query_result)
+    #query_result = execute_query(connection, 'INSERT INTO Video (VideoCode, videoLength) VALUES (%s, %s);', (2006, 43))
+    #print(query_result)
 
     question_no = sys.argv[1]
     other_args = sys.argv[2:]
