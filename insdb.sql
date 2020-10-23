@@ -47,7 +47,8 @@ INSERT INTO `TechnicalSupport` (`empId`, `name`, `gender`) VALUES (7, 'Prof. Ali
 INSERT INTO `TechnicalSupport` (`empId`, `name`, `gender`) VALUES (8, 'Kenny Jaskolski II', 'f');
 INSERT INTO `TechnicalSupport` (`empId`, `name`, `gender`) VALUES (9, 'Lonny Murazik', 'f');
 INSERT INTO `TechnicalSupport` (`empId`, `name`, `gender`) VALUES (10, 'Elyssa Walter', 'f');
-
+INSERT INTO `TechnicalSupport` (`empId`, `name`, `gender`) VALUES (11, 'Elyssa Walter', 'f');
+INSERT INTO `TechnicalSupport` (`empId`, `name`, `gender`) VALUES (12, 'Elyssa Walter', 'f');
 /*insertion for Administrator table, 5 records*/
 INSERT INTO `Administrator` (`empId`, `name`, `gender`) VALUES (1, 'Francesco Hickle I', 'o');
 INSERT INTO `Administrator` (`empId`, `name`, `gender`) VALUES (2, 'Miss Alycia Okuneva III', 'o');
