@@ -31,6 +31,17 @@ import sys
 
 from typing import List
 
+RED = '\033[91m'
+END = '\033[0m'
+
+two_param_message = """
+                        Wrong argument count please pass two arguments, 
+                        the question number and the query parameters
+                    """
+one_param_message = """
+                        Wrong argument count, please pass only one argument,
+                        The question number
+                    """
 
 def create_connection(host_name: str, user_name: str, user_password: str,
                       db_name: str) -> mysql.connector.MySQLConnection:
@@ -100,7 +111,7 @@ def execute_query(connection_obj: mysql.connector.MySQLConnection, query: str, p
     except Error as e:
         print(f"The error '{e}' occurred")
         print(cursor.statement)
-    if type(result) == list and len(result == 0):
+    if type(result) == list and len(result) == 0:
         result = [("NO RESULT",)]
 
     return result
@@ -108,6 +119,8 @@ def execute_query(connection_obj: mysql.connector.MySQLConnection, query: str, p
 
 # Functions for each question
 def question_1(connection, args: List):
+
+    assert len(args) == 1, two_param_message
 
     print("This is the answer to q1")
     #execute_query(connection, 'INSERT INTO `Site` (`siteCode`, `type`, `address`, `phone`) VALUES (%s, %s, %s, %s);',(2999, 'bar', '1700 E University Ave. Las Cruces, NM 88003', '(123) 456-7890'))
@@ -117,14 +130,18 @@ def question_1(connection, args: List):
 
 
 def question_2(connection, args: List):
+    assert len(args) == 1, two_param_message
     print("This is the answer to q2")
+    a = 2/0
 
 
 def question_3(connection, args: List):
+    assert len(args) == 0, one_param_message
     print("This is the answer to q3")
 
 
 def question_4(connection, args: List):
+    assert len(args) == 1, two_param_message
     print("This is the answer to q4")
     results = execute_query(
         connection, "SELECT * FROM Client WHERE phone=%s;", (*args,))
@@ -132,6 +149,7 @@ def question_4(connection, args: List):
 
 
 def question_5(connection, args: List):
+    assert len(args) == 0, one_param_message
     print("This is the answer to q5")
     results = execute_query(
         connection, 'SELECT Administrator.empID, Administrator.name, AdmWorkHours.hours FROM Administrator INNER JOIN AdmWorkHours ON Administrator.empID=AdmWorkHours.empID ORDER BY AdmWorkHours.hours ASC;', ())
@@ -139,6 +157,7 @@ def question_5(connection, args: List):
 
 
 def question_6(connection, args: List):
+    assert len(args) == 1, two_param_message
     print("This is the answer to q6")
     results = execute_query(
         connection, 'SELECT TechnicalSupport.name FROM TechnicalSupport INNER JOIN Specializes ON TechnicalSupport.empID=Specializes.empID WHERE Specializes.modelNo=%s;', (*args,))
@@ -146,6 +165,7 @@ def question_6(connection, args: List):
 
 
 def question_7(connection, args: List):
+    assert len(args) == 0, one_param_message
     print("This is the answer to q7")
     results = execute_query(
         connection, 'SELECT Salesman.name, Purchases.commissionRate FROM Salesman INNER JOIN Purchases ON Salesman.empID=Purchases.empID ORDER BY Purchases.commissionRate DESC;', ())
@@ -153,6 +173,7 @@ def question_7(connection, args: List):
 
 
 def question_8(connection, args: List):
+    assert len(args) == 0, one_param_message
     print("This is the answer to q8")
     admincount = execute_query(connection, 'SELECT * FROM Administrator;', ())
     salescount = execute_query(connection, 'SELECT * FROM Salesman;', ())
@@ -208,4 +229,11 @@ if __name__ == "__main__":
     question_no = sys.argv[1]
     other_args = sys.argv[2:]
 
-    q_dict[question_no](connection, other_args)
+    try:
+        q_dict[question_no](connection, other_args)
+    except AssertionError as e:
+        print(RED + "Something went wrong with your inputs:" + END, e)
+    except KeyError:
+        print(RED + "This question does not exist. Please pass the correct question number as a digit" + END)
+    except:
+        print(RED + "Something unexpected happened with the program check your params" + END)
