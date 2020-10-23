@@ -12,6 +12,7 @@ INSERT INTO `Video` (`videoCode`, `videoLength`) VALUES (2002, 37);
 INSERT INTO `Video` (`videoCode`, `videoLength`) VALUES (2003, 25);
 INSERT INTO `Video` (`videoCode`, `videoLength`) VALUES (2004, 26);
 INSERT INTO `Video` (`videoCode`, `videoLength`) VALUES (2005, 28);
+INSERT INTO `Video` (`videoCode`, `videoLength`) VALUES (2006, 29);
 
 /*insertion for Model table, 5 records*/
 INSERT INTO `Model` (`modelNo`, `width`, `height`, `weight`, `depth`, `screenSize`) VALUES ('1001', 8068.00, 209.00, 9999.99, 4966.00, 7.00);
