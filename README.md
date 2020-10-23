@@ -32,3 +32,11 @@
 2. run `python3 part2.py <args>
 
 The `<args>` is a space separated list of questions to answer. Has to be numbers between 1 and 8 inclusive.
+
+## Notes
+
+* We were unable to reach Brandon throughout the course of our work on Part 2 of this project. He did not contribute to part 2.
+
+### Assumptions
+
+1. The program assumes that inserted commissionRate value is average commission rate.
