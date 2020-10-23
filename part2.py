@@ -127,9 +127,13 @@ def question_5(connection, args: List):
         print(results)
 def question_6(connection, args: List):
         print("This is the answer to q6")
+        results = execute_query(connection, 'SELECT TechnicalSupport.name FROM TechnicalSupport INNER JOIN Specializes ON TechnicalSupport.empID=Specializes.empID WHERE Specializes.modelNo=%s;',(*args,))
+        print(results)
 
 def question_7(connection, args: List):
         print("This is the answer to q7")
+        results = execute_query(connection, 'SELECT Salesman.name, Purchases.commissionRate FROM Salesman INNER JOIN Purchases ON Salesman.empID=Purchases.empID ORDER BY Purchases.commissionRate DESC;',())
+        print(results)
 
 def question_8(connection, args: List):
         print("This is the answer to q8")
