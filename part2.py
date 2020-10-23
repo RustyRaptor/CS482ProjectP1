@@ -43,6 +43,7 @@ one_param_message = """
                         The question number
                     """
 
+
 def create_connection(host_name: str, user_name: str, user_password: str,
                       db_name: str) -> mysql.connector.MySQLConnection:
     """Creates a connection to a MYSql DB instance.
@@ -131,8 +132,10 @@ def question_1(connection, args: List):
 
 def question_2(connection, args: List):
     assert len(args) == 1, two_param_message
+
     print("This is the answer to q2")
-    a = 2/0
+    results = execute_query(connection, 'SELECT DigitalDisplay.serialNo, Specializes.modelNo, TechnicalSupport.name FROM DigitalDisplay INNER JOIN Specializes ON DigitalDisplay.modelNo=Specializes.modelNo INNER JOIN TechnicalSupport ON TechnicalSupport.empID=Specializes.empID WHERE schedulerSystem=%s', (*args,))
+    print(results)
 
 
 def question_3(connection, args: List):
@@ -236,4 +239,5 @@ if __name__ == "__main__":
     except KeyError:
         print(RED + "This question does not exist. Please pass the correct question number as a digit" + END)
     except:
-        print(RED + "Something unexpected happened with the program check your params" + END)
+        print(
+            RED + "Something unexpected happened with the program check your params" + END)
