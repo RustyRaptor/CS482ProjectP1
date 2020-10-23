@@ -109,7 +109,7 @@ def question_1(connection, args: List):
         print("This is the answer to q1")
         #execute_query(connection, 'INSERT INTO `Site` (`siteCode`, `type`, `address`, `phone`) VALUES (%s, %s, %s, %s);',(2999, 'bar', '1700 E University Ave. Las Cruces, NM 88003', '(123) 456-7890'))
         results = execute_query(connection, 'SELECT * FROM Site WHERE address LIKE \%%s\%;', (*other_args,))
-        print(results);
+        print(results)
 
 def question_2(connection, args: List):
         print("This is the answer to q2")
