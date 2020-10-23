@@ -113,7 +113,8 @@ def question_1(connection, args: List):
 
 def question_2(connection, args: List):
         print("This is the answer to q2")
-        
+        results = execute_query(connection, 'SELECT DigitalDisplay.serialNo, Specializes.modelNo, TechnicalSupport.name FROM DigitalDisplay INNER JOIN Specializes ON DigitalDisplay.modelNo=Specializes.modelNo INNER JOIN TechnicalSupport ON TechnicalSupport.empID=Specializes.empID WHERE schedulerSystem=%s',(*args,))
+        print(results)
 
 def question_3(connection, args: List):
         print("This is the answer to q3")
