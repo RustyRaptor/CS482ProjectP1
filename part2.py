@@ -105,6 +105,7 @@ def execute_query(connection_obj: mysql.connector.MySQLConnection, query: str, p
             result = cursor.fetchall()
         except mysql.connector.InterfaceError:
             pass
+        print(cursor.statement)
         cursor.close()
         connection_obj.commit()
 
@@ -123,8 +124,10 @@ def question_1(connection, args: List):
     assert len(args) == 1, two_param_message
 
     # execute_query(connection, 'INSERT INTO `Site` (`siteCode`, `type`, `address`, `phone`) VALUES (%s, %s, %s, %s);',(2999, 'bar', '1700 E University Ave. Las Cruces, NM 88003', '(123) 456-7890'))
+    # results = execute_query(
+    #     connection, "SELECT * FROM Site WHERE address LIKE %s %s %s;", ("%", *args, "%"))
     results = execute_query(
-        connection, "SELECT * FROM Site WHERE address LIKE %s %s %s;", ("%", *args, "%"))
+        connection, "SELECT * FROM Site WHERE address LIKE %s;", ("%"+args[0]+"%",))
     print(results)
 
 
@@ -140,7 +143,7 @@ def question_3(connection, args: List):
     namelist = []
 
     results = execute_query(
-        connection, "SELECT DISTINCT name FROM TechnicalSupport ORDER BY empId ASC;", ())
+        connection, "SELECT DISTINCT name FROM TechnicalSupport ORDER BY name ASC;", ())
 
     for key, val in enumerate(results):
         namelist.append([val[0], 1, []])
