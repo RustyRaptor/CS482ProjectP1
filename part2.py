@@ -108,11 +108,17 @@ def execute_query(connection_obj: mysql.connector.MySQLConnection, query: str, p
 def question_1(connection, args: List):
         print("This is the answer to q1")
         #execute_query(connection, 'INSERT INTO `Site` (`siteCode`, `type`, `address`, `phone`) VALUES (%s, %s, %s, %s);',(2999, 'bar', '1700 E University Ave. Las Cruces, NM 88003', '(123) 456-7890'))
+<<<<<<< HEAD
         results = execute_query(connection, "SELECT * FROM Site WHERE address LIKE %s %s %s;", ("%", *args, "%"))
         print(results)
+=======
+        #results = execute_query(connection, 'SELECT * FROM Site WHERE address LIKE \%%s\%;', (*other_args,))
+        #print(results);
+>>>>>>> 45014ef2798555e87ab6005ec9853492479bfe53
 
 def question_2(connection, args: List):
         print("This is the answer to q2")
+        #execute_query
 
 def question_3(connection, args: List):
         print("This is the answer to q3")
@@ -122,7 +128,8 @@ def question_4(connection, args: List):
 
 def question_5(connection, args: List):
         print("This is the answer to q5")
-
+        results = execute_query(connection, 'SELECT Administrator.empID, Administrator.name, AdmWorkHours.hours FROM Administrator INNER JOIN AdmWorkHours ON Administrator.empID=AdmWorkHours.empID ORDER BY AdmWorkHours.hours ASC;',())
+        print(results)
 def question_6(connection, args: List):
         print("This is the answer to q6")
 
