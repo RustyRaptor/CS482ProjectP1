@@ -113,13 +113,15 @@ def question_1(connection, args: List):
 
 def question_2(connection, args: List):
         print("This is the answer to q2")
-        #execute_query
+        
 
 def question_3(connection, args: List):
         print("This is the answer to q3")
 
 def question_4(connection, args: List):
         print("This is the answer to q4")
+        results = execute_query(connection, "SELECT * FROM Client WHERE phone=%s;", (*args,))
+        print(results)
 
 def question_5(connection, args: List):
         print("This is the answer to q5")
