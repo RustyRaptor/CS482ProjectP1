@@ -85,7 +85,7 @@ def execute_query(connection_obj: mysql.connector.MySQLConnection, query: str, p
     print(param_tuple)
     print(query)
 
-    result = "NO RESULT"
+    result = [("NO RESULT",)]
     cursor = connection_obj.cursor()
     try:
         cursor.execute(query, params=param_tuple)
@@ -100,67 +100,84 @@ def execute_query(connection_obj: mysql.connector.MySQLConnection, query: str, p
     except Error as e:
         print(f"The error '{e}' occurred")
         print(cursor.statement)
+    if type(result) == list and len(result == 0):
+        result = [("NO RESULT",)]
 
     return result
 
 
 # Functions for each question
 def question_1(connection, args: List):
-        print("This is the answer to q1")
-        #execute_query(connection, 'INSERT INTO `Site` (`siteCode`, `type`, `address`, `phone`) VALUES (%s, %s, %s, %s);',(2999, 'bar', '1700 E University Ave. Las Cruces, NM 88003', '(123) 456-7890'))
-        results = execute_query(connection, "SELECT * FROM Site WHERE address LIKE %s %s %s;", ("%", *args, "%"))
-        print(results)
+
+    print("This is the answer to q1")
+    #execute_query(connection, 'INSERT INTO `Site` (`siteCode`, `type`, `address`, `phone`) VALUES (%s, %s, %s, %s);',(2999, 'bar', '1700 E University Ave. Las Cruces, NM 88003', '(123) 456-7890'))
+    results = execute_query(
+        connection, "SELECT * FROM Site WHERE address LIKE %s %s %s;", ("%", *args, "%"))
+    print(results)
+
 
 def question_2(connection, args: List):
-        print("This is the answer to q2")
-        
+    print("This is the answer to q2")
+
 
 def question_3(connection, args: List):
-        print("This is the answer to q3")
+    print("This is the answer to q3")
+
 
 def question_4(connection, args: List):
-        print("This is the answer to q4")
-        results = execute_query(connection, "SELECT * FROM Client WHERE phone=%s;", (*args,))
-        print(results)
+    print("This is the answer to q4")
+    results = execute_query(
+        connection, "SELECT * FROM Client WHERE phone=%s;", (*args,))
+    print(results)
+
 
 def question_5(connection, args: List):
-        print("This is the answer to q5")
-        results = execute_query(connection, 'SELECT Administrator.empID, Administrator.name, AdmWorkHours.hours FROM Administrator INNER JOIN AdmWorkHours ON Administrator.empID=AdmWorkHours.empID ORDER BY AdmWorkHours.hours ASC;',())
-        print(results)
+    print("This is the answer to q5")
+    results = execute_query(
+        connection, 'SELECT Administrator.empID, Administrator.name, AdmWorkHours.hours FROM Administrator INNER JOIN AdmWorkHours ON Administrator.empID=AdmWorkHours.empID ORDER BY AdmWorkHours.hours ASC;', ())
+    print(results)
+
+
 def question_6(connection, args: List):
-        print("This is the answer to q6")
-        results = execute_query(connection, 'SELECT TechnicalSupport.name FROM TechnicalSupport INNER JOIN Specializes ON TechnicalSupport.empID=Specializes.empID WHERE Specializes.modelNo=%s;',(*args,))
-        print(results)
+    print("This is the answer to q6")
+    results = execute_query(
+        connection, 'SELECT TechnicalSupport.name FROM TechnicalSupport INNER JOIN Specializes ON TechnicalSupport.empID=Specializes.empID WHERE Specializes.modelNo=%s;', (*args,))
+    print(results)
+
 
 def question_7(connection, args: List):
-        print("This is the answer to q7")
-        results = execute_query(connection, 'SELECT Salesman.name, Purchases.commissionRate FROM Salesman INNER JOIN Purchases ON Salesman.empID=Purchases.empID ORDER BY Purchases.commissionRate DESC;',())
-        print(results)
+    print("This is the answer to q7")
+    results = execute_query(
+        connection, 'SELECT Salesman.name, Purchases.commissionRate FROM Salesman INNER JOIN Purchases ON Salesman.empID=Purchases.empID ORDER BY Purchases.commissionRate DESC;', ())
+    print(results)
+
 
 def question_8(connection, args: List):
-        print("This is the answer to q8")
-        admincount = execute_query(connection, 'SELECT * FROM Administrator;',())
-        salescount = execute_query(connection, 'SELECT * FROM Salesman;',())
-        techcount = execute_query(connection, 'SELECT * FROM TechnicalSupport;',())
-        adminsize = len(admincount)
-        salessize = len(salescount)
-        techsize = len(techcount)
+    print("This is the answer to q8")
+    admincount = execute_query(connection, 'SELECT * FROM Administrator;', ())
+    salescount = execute_query(connection, 'SELECT * FROM Salesman;', ())
+    techcount = execute_query(
+        connection, 'SELECT * FROM TechnicalSupport;', ())
+    adminsize = len(admincount)
+    salessize = len(salescount)
+    techsize = len(techcount)
 
-        print('Role                 Count')
-        print('--------------------------')
-        print('Administrator','         ', adminsize)
-        print('Salesmen','              ', salessize)
-        print('Technical Support','     ', techsize)
+    print('Role                 Count')
+    print('--------------------------')
+    print('Administrator', '         ', adminsize)
+    print('Salesmen', '              ', salessize)
+    print('Technical Support', '     ', techsize)
+
 
 q_dict = {
-        "1": question_1,
-        "2": question_2,
-        "3": question_3,
-        "4": question_4,
-        "5": question_5,
-        "6": question_6,
-        "7": question_7,
-        "8": question_8
+    "1": question_1,
+    "2": question_2,
+    "3": question_3,
+    "4": question_4,
+    "5": question_5,
+    "6": question_6,
+    "7": question_7,
+    "8": question_8
 }
 """q_dict (dict): maps the string number of a question to it\'s function"""
 
@@ -169,14 +186,12 @@ if __name__ == "__main__":
     print(f"Arguments count: {len(sys.argv)}")
     for i, arg in enumerate(sys.argv):
         print(f"Argument {i:>6}: {arg}")
-    
-
-
 
     # This initiates the connection to the DB on the CS machines.
     # To use on your own instance replace the user_name and insert a password
     # DO NOT push this file to github with your password in here. Make sure you remove it first.
-    connection = create_connection("dbclass.cs.nmsu.edu", "zarafat", "Randomhack123_", "zarafat_482502fa20")
+    connection = create_connection(
+        "dbclass.cs.nmsu.edu", "zarafat", "Randomhack123_", "zarafat_482502fa20")
 
     mysql.connector.paramstyle = "format"
 
@@ -184,13 +199,13 @@ if __name__ == "__main__":
 
     # Test a simple select statement
     #query_result = execute_query(connection, 'SELECT * FROM Salesman;', ())
-    #print(query_result)
+    # print(query_result)
 
     # This will insert data to test the prepared statement
     #query_result = execute_query(connection, 'INSERT INTO Video (VideoCode, videoLength) VALUES (%s, %s);', (2006, 43))
-    #print(query_result)
+    # print(query_result)
 
     question_no = sys.argv[1]
     other_args = sys.argv[2:]
-    
+
     q_dict[question_no](connection, other_args)
