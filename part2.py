@@ -137,6 +137,18 @@ def question_7(connection, args: List):
 
 def question_8(connection, args: List):
         print("This is the answer to q8")
+        admincount = execute_query(connection, 'SELECT * FROM Administrator;',())
+        salescount = execute_query(connection, 'SELECT * FROM Salesman;',())
+        techcount = execute_query(connection, 'SELECT * FROM TechnicalSupport;',())
+        adminsize = len(admincount)
+        salessize = len(salescount)
+        techsize = len(techcount)
+
+        print('Role                 Count')
+        print('--------------------------')
+        print('Administrator','         ', adminsize)
+        print('Salesmen','              ', salessize)
+        print('Technical Support','     ', techsize)
 
 q_dict = {
         "1": question_1,
