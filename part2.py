@@ -1,3 +1,30 @@
+# -*- coding: utf-8 -*-
+"""Project Part 2
+
+This program will take in as an argument the question number and then optionally
+other arguments needed by the question for inserts, updates, or deletes
+
+Example:
+        python3 part2.py 6 blah 420 blahblah 69
+
+Attributes:
+    module_level_variable1 (int): Module level variables may be documented in
+        either the ``Attributes`` section of the module docstring, or in an
+        inline docstring immediately following the variable.
+
+        Either form is acceptable, but the two should not be mixed. Choose
+        one convention to document module level variables and be consistent
+        with it.
+
+Todo:
+    * For module TODOs
+    * You have to also use ``sphinx.ext.todo`` extension
+
+.. _Google Python Style Guide:
+   http://google.github.io/styleguide/pyguide.html
+
+"""
+
 import mysql.connector
 from mysql.connector import Error
 import sys
@@ -39,11 +66,15 @@ def execute_query(connection_obj: mysql.connector.MySQLConnection, query: str, p
     """
     Executes a given SQL query and returns the result
     Args:
-        connection_obj: The MySqlConnection object we created
-        query: A string containing a valid SQL Query and optionally formatter
+        connection_obj (mysql.connector.MySQLConnection): The MySqlConnection object we created
+
+        query (str): A string containing a valid SQL Query and optionally formatter
         strings %s for where the parameters in the param_tuple will go
-        param_tuple: A tuple of the parameters to go into the query.
-        Pass empty tuple if there are no params.
+
+        param_tuple (tuple): A tuple of the parameters to go into the query.
+        Pass empty tuple if there are no params. If there is only one param
+        make sure to add a comma after it so python knows it's a tuple e.g.
+        ("John",) instead of ("John").
 
     Returns:
         The result of the query we run as a List of tuples
@@ -108,6 +139,7 @@ q_dict = {
         "7": question_7,
         "8": question_8
 }
+"""q_dict (dict): maps the string number of a question to it\'s function"""
 
 # Command line arguments can be passed and read from sys.argv as a python list of strings
 if __name__ == "__main__":
@@ -135,7 +167,9 @@ if __name__ == "__main__":
     query_result = execute_query(connection, 'INSERT INTO Video (VideoCode, videoLength) VALUES (%s, %s);', (2006, 43))
     print(query_result)
 
-    question = sys.argv[1]
+    question_no = sys.argv[1]
     other_args = sys.argv[2:]
     
-    q_dict[question](connection, other_args)
+    q_dict[question_no](connection, other_args)
+
+    help(execute_query)
