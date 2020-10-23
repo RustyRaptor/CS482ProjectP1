@@ -35,7 +35,7 @@ RED = '\033[91m'
 END = '\033[0m'
 
 two_param_message = """
-                        Wrong argument count please pass two arguments, 
+                        Wrong argument count please pass two arguments,
                         the question number and the query parameters
                     """
 one_param_message = """
@@ -122,8 +122,7 @@ def execute_query(connection_obj: mysql.connector.MySQLConnection, query: str, p
 def question_1(connection, args: List):
     assert len(args) == 1, two_param_message
 
-    print("This is the answer to q1")
-    #execute_query(connection, 'INSERT INTO `Site` (`siteCode`, `type`, `address`, `phone`) VALUES (%s, %s, %s, %s);',(2999, 'bar', '1700 E University Ave. Las Cruces, NM 88003', '(123) 456-7890'))
+    # execute_query(connection, 'INSERT INTO `Site` (`siteCode`, `type`, `address`, `phone`) VALUES (%s, %s, %s, %s);',(2999, 'bar', '1700 E University Ave. Las Cruces, NM 88003', '(123) 456-7890'))
     results = execute_query(
         connection, "SELECT * FROM Site WHERE address LIKE %s %s %s;", ("%", *args, "%"))
     print(results)
@@ -132,21 +131,37 @@ def question_1(connection, args: List):
 def question_2(connection, args: List):
     assert len(args) == 1, two_param_message
 
-    print("This is the answer to q2")
     results = execute_query(connection, 'SELECT DigitalDisplay.serialNo, Specializes.modelNo, TechnicalSupport.name FROM DigitalDisplay INNER JOIN Specializes ON DigitalDisplay.modelNo=Specializes.modelNo INNER JOIN TechnicalSupport ON TechnicalSupport.empID=Specializes.empID WHERE schedulerSystem=%s', (*args,))
     print(results)
 
 
 def question_3(connection, args: List):
     assert len(args) == 0, one_param_message
+    namelist = []
 
-    print("This is the answer to q3")
+    results = execute_query(
+        connection, "SELECT DISTINCT name FROM TechnicalSupport ORDER BY empId ASC;", ())
+
+    for key, val in enumerate(results):
+        namelist.append([val[0], 1, []])
+
+    for key, val in enumerate(namelist):
+        result = execute_query(
+            connection, "SELECT empId, name, gender FROM TechnicalSupport WHERE name = %s;", (val[0],))
+        count = len(result)
+        namelist[key][2] = result
+        namelist[key][1] = count
+
+    print("Name  Cnt")
+    print("------------")
+
+    for i in namelist:
+        print(i[0], i[1], i[2] if len(i[2]) > 1 else "")
 
 
 def question_4(connection, args: List):
     assert len(args) == 1, two_param_message
 
-    print("This is the answer to q4")
     results = execute_query(
         connection, "SELECT * FROM Client WHERE phone=%s;", (*args,))
     print(results)
@@ -155,7 +170,6 @@ def question_4(connection, args: List):
 def question_5(connection, args: List):
     assert len(args) == 0, one_param_message
 
-    print("This is the answer to q5")
     results = execute_query(
         connection, 'SELECT Administrator.empID, Administrator.name, AdmWorkHours.hours FROM Administrator INNER JOIN AdmWorkHours ON Administrator.empID=AdmWorkHours.empID ORDER BY AdmWorkHours.hours ASC;', ())
     print(results)
@@ -164,7 +178,6 @@ def question_5(connection, args: List):
 def question_6(connection, args: List):
     assert len(args) == 1, two_param_message
 
-    print("This is the answer to q6")
     results = execute_query(
         connection, 'SELECT TechnicalSupport.name FROM TechnicalSupport INNER JOIN Specializes ON TechnicalSupport.empID=Specializes.empID WHERE Specializes.modelNo=%s;', (*args,))
     print(results)
@@ -173,7 +186,6 @@ def question_6(connection, args: List):
 def question_7(connection, args: List):
     assert len(args) == 0, one_param_message
 
-    print("This is the answer to q7")
     results = execute_query(
         connection, 'SELECT Salesman.name, Purchases.commissionRate FROM Salesman INNER JOIN Purchases ON Salesman.empID=Purchases.empID ORDER BY Purchases.commissionRate DESC;', ())
     print(results)
@@ -182,7 +194,6 @@ def question_7(connection, args: List):
 def question_8(connection, args: List):
     assert len(args) == 0, one_param_message
 
-    print("This is the answer to q8")
     admincount = execute_query(connection, 'SELECT * FROM Administrator;', ())
     salescount = execute_query(connection, 'SELECT * FROM Salesman;', ())
     techcount = execute_query(
@@ -208,7 +219,6 @@ q_dict = {
     "7": question_7,
     "8": question_8
 }
-"""q_dict (dict): maps the string number of a question to it\'s function"""
 
 # Command line arguments can be passed and read from sys.argv as a python list of strings
 if __name__ == "__main__":
@@ -227,16 +237,17 @@ if __name__ == "__main__":
     print(mysql.connector.paramstyle)
 
     # Test a simple select statement
-    #query_result = execute_query(connection, 'SELECT * FROM Salesman;', ())
+    # query_result = execute_query(connection, 'SELECT * FROM Salesman;', ())
     # print(query_result)
 
     # This will insert data to test the prepared statement
-    #query_result = execute_query(connection, 'INSERT INTO Video (VideoCode, videoLength) VALUES (%s, %s);', (2006, 43))
+    # query_result = execute_query(connection, 'INSERT INTO Video (VideoCode, videoLength) VALUES (%s, %s);', (2006, 43))
     # print(query_result)
 
     question_no = sys.argv[1]
     other_args = sys.argv[2:]
 
+    print("The answer to Q"+question_no+":")
     try:
         q_dict[question_no](connection, other_args)
     except AssertionError as e:
