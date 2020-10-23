@@ -189,9 +189,21 @@ def question_7(connection, args: List):
     """
     assert len(args) == 0, one_param_message
 
-    results = execute_query(Todo:
-    * For module TODOs
-    * You have to also use ``sphinx.ext.todo`` extension
+    results = execute_query(
+        connection, 'SELECT Salesman.name, Purchases.commissionRate FROM Salesman INNER JOIN Purchases ON Salesman.empID=Purchases.empID ORDER BY Purchases.commissionRate DESC;', ())
+    print(results)
+
+
+def question_8(connection, args: List):
+    assert len(args) == 0, one_param_message
+
+    admincount = execute_query(connection, 'SELECT * FROM Administrator;', ())
+    salescount = execute_query(connection, 'SELECT * FROM Salesman;', ())
+    techcount = execute_query(
+        connection, 'SELECT * FROM TechnicalSupport;', ())
+    adminsize = len(admincount)
+    salessize = len(salescount)
+    techsize = len(techcount)
 
     print('Role                 Count')
     print('--------------------------')
@@ -200,7 +212,7 @@ def question_7(connection, args: List):
     print('Technical Support', '     ', techsize)
 
 
-q_dict={
+q_dict = {
     "1": question_1,
     "2": question_2,
     "3": question_3,
@@ -220,10 +232,10 @@ if __name__ == "__main__":
     # This initiates the connection to the DB on the CS machines.
     # To use on your own instance replace the user_name and insert a password
     # DO NOT push this file to github with your password in here. Make sure you remove it first.
-    connection=create_connection(
+    connection = create_connection(
         "dbclass.cs.nmsu.edu", "zarafat", "Randomhack123_", "zarafat_482502fa20")
 
-    mysql.connector.paramstyle="format"
+    mysql.connector.paramstyle = "format"
 
     # print(mysql.connector.paramstyle)
 
@@ -235,8 +247,8 @@ if __name__ == "__main__":
     # query_result = execute_query(connection, 'INSERT INTO Video (VideoCode, videoLength) VALUES (%s, %s);', (2006, 43))
     # print(query_result)
 
-    question_no=sys.argv[1]
-    other_args=sys.argv[2:]
+    question_no = sys.argv[1]
+    other_args = sys.argv[2:]
 
     print("The answer to Q"+question_no+":")
     try:

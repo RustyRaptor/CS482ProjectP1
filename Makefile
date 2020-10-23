@@ -19,18 +19,16 @@ q1 :
 q2 :
 	echo -e "${RED}Question 2 Tests${END}"
 	echo -e "${RED}---------------------------------------------------------------------------${END}"
-
 	python3 part2.py 2 "Random"  
 	python3 part2.py 2 "Smart"  
 	python3 part2.py 2 "Virtue"  
-	python3 part2.py 2 "Peepee"  
+	python3 part2.py 2 "Something"  
 	echo -e "\n\n"
 q3 :
 	echo -e "${RED}Question 3 Tests${END}"
 	echo -e "${RED}---------------------------------------------------------------------------${END}"
 	python3 part2.py 3 
 	echo -e "\n\n"
-	
 q4 :
 	echo -e "${RED}Question 4 Tests${END}"
 	echo -e "${RED}---------------------------------------------------------------------------${END}"
