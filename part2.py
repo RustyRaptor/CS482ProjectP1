@@ -120,7 +120,6 @@ def execute_query(connection_obj: mysql.connector.MySQLConnection, query: str, p
 
 # Functions for each question
 def question_1(connection, args: List):
-
     assert len(args) == 1, two_param_message
 
     print("This is the answer to q1")
@@ -140,11 +139,13 @@ def question_2(connection, args: List):
 
 def question_3(connection, args: List):
     assert len(args) == 0, one_param_message
+
     print("This is the answer to q3")
 
 
 def question_4(connection, args: List):
     assert len(args) == 1, two_param_message
+
     print("This is the answer to q4")
     results = execute_query(
         connection, "SELECT * FROM Client WHERE phone=%s;", (*args,))
@@ -153,6 +154,7 @@ def question_4(connection, args: List):
 
 def question_5(connection, args: List):
     assert len(args) == 0, one_param_message
+
     print("This is the answer to q5")
     results = execute_query(
         connection, 'SELECT Administrator.empID, Administrator.name, AdmWorkHours.hours FROM Administrator INNER JOIN AdmWorkHours ON Administrator.empID=AdmWorkHours.empID ORDER BY AdmWorkHours.hours ASC;', ())
@@ -161,6 +163,7 @@ def question_5(connection, args: List):
 
 def question_6(connection, args: List):
     assert len(args) == 1, two_param_message
+
     print("This is the answer to q6")
     results = execute_query(
         connection, 'SELECT TechnicalSupport.name FROM TechnicalSupport INNER JOIN Specializes ON TechnicalSupport.empID=Specializes.empID WHERE Specializes.modelNo=%s;', (*args,))
@@ -169,6 +172,7 @@ def question_6(connection, args: List):
 
 def question_7(connection, args: List):
     assert len(args) == 0, one_param_message
+
     print("This is the answer to q7")
     results = execute_query(
         connection, 'SELECT Salesman.name, Purchases.commissionRate FROM Salesman INNER JOIN Purchases ON Salesman.empID=Purchases.empID ORDER BY Purchases.commissionRate DESC;', ())
@@ -177,6 +181,7 @@ def question_7(connection, args: List):
 
 def question_8(connection, args: List):
     assert len(args) == 0, one_param_message
+
     print("This is the answer to q8")
     admincount = execute_query(connection, 'SELECT * FROM Administrator;', ())
     salescount = execute_query(connection, 'SELECT * FROM Salesman;', ())
