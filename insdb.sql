@@ -164,9 +164,12 @@ VALUES (6006, 'economy', '1999-11-26', '2020-08-20', 91784.02, 209708);
 /*insertion for AdmWorkHours, 5 records*/
 INSERT INTO `AdmWorkHours` (`empId`, `day`, `hours`) VALUES (1, '2020.08.18', 35.8);
 INSERT INTO `AdmWorkHours` (`empId`, `day`, `hours`) VALUES (2, '2020.09.18', 36);
-INSERT INTO `AdmWorkHours` (`empId`, `day`, `hours`) VALUES (3, '2020.05.22', 37);
+INSERT INTO `AdmWorkHours` (`empId`, `day`, `hours`) VALUES (3, '2020.05.22', 30);
+INSERT INTO `AdmWorkHours` (`empId`, `day`, `hours`) VALUES (3, '2020.05.23', 30);
 INSERT INTO `AdmWorkHours` (`empId`, `day`, `hours`) VALUES (4, '2020.09.16', 35.8);
-INSERT INTO `AdmWorkHours` (`empId`, `day`, `hours`) VALUES (5, '2020.02.23', 38.5);
+INSERT INTO `AdmWorkHours` (`empId`, `day`, `hours`) VALUES (5, '2020.02.23', 20.0);
+INSERT INTO `AdmWorkHours` (`empId`, `day`, `hours`) VALUES (5, '2020.02.24', 20.0);
+INSERT INTO `AdmWorkHours` (`empId`, `day`, `hours`) VALUES (5, '2020.02.25', 20.0);
 
 /*insertion for Broadcasts, 5 records*/
 INSERT INTO `Broadcasts` (`videoCode`, `siteCode`) VALUES (2001, 3001);
