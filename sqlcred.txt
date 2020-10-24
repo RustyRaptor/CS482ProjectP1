@@ -1,0 +1,3 @@
+[client]
+user=zarafat
+password=Randomhack123_
