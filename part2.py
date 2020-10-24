@@ -28,13 +28,13 @@ from typing import List
 RED = '\033[91m'
 END = '\033[0m'
 
-two_param_message = """
-                        Wrong argument count please pass two arguments,
-                        the question number and the query parameters
+two_param_message = f"""
+                        {RED}Wrong argument count please pass two arguments,
+                        the question number and the query parameters {END}
                     """
-one_param_message = """
-                        Wrong argument count, please pass only one argument,
-                        The question number
+one_param_message = f"""
+                        {RED}Wrong argument count, please pass only one argument,
+                        The question number {END}
                     """
 
 
