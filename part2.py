@@ -68,11 +68,13 @@ def create_connection(host_name: str, user_name: str, user_password: str,
     return connection_obj
 
 
-def execute_query(connection_obj: mysql.connector.MySQLConnection, query: str, param_tuple: tuple) -> List[tuple]:
+def execute_query(connection_obj: mysql.connector.MySQLConnection, query: str,
+                  param_tuple: tuple) -> List[tuple]:
     """
     Executes a given SQL query and returns the result
     Args:
-        connection_obj (mysql.connector.MySQLConnection): The MySqlConnection object we created
+        connection_obj (mysql.connector.MySQLConnection): The MySqlConnection 
+        object we created
 
         query (str): A string containing a valid SQL Query and optionally formatter
         strings %s for where the parameters in the param_tuple will go
@@ -113,23 +115,42 @@ def execute_query(connection_obj: mysql.connector.MySQLConnection, query: str, p
     return result
 
 
+def print_results(result: [tuple]):
+    """Neatly print each tuple in the query results list
+
+    Args:
+        result (List[tuple]): The list of tuples returned by cursor.fetchall()
+    """
+    for i in result:
+        print(i)
+
+
 # Functions for each question
 def question_1(connection, args: List):
     assert len(args) == 1, two_param_message
 
-    # execute_query(connection, 'INSERT INTO `Site` (`siteCode`, `type`, `address`, `phone`) VALUES (%s, %s, %s, %s);',(2999, 'bar', '1700 E University Ave. Las Cruces, NM 88003', '(123) 456-7890'))
-    # results = execute_query(
-    #     connection, "SELECT * FROM Site WHERE address LIKE %s %s %s;", ("%", *args, "%"))
-    results = execute_query(
-        connection, "SELECT * FROM Site WHERE address LIKE %s;", ("%"+args[0]+"%",))
-    print(results)
+    input_query = """
+        SELECT * FROM Site WHERE address LIKE %s;
+    """
+    results = execute_query(connection, input_query, ("%"+args[0]+"%",))
+    print_results(results)
 
 
 def question_2(connection, args: List):
     assert len(args) == 1, two_param_message
 
-    results = execute_query(connection, 'SELECT DigitalDisplay.serialNo, Specializes.modelNo, TechnicalSupport.name FROM DigitalDisplay INNER JOIN Specializes ON DigitalDisplay.modelNo=Specializes.modelNo INNER JOIN TechnicalSupport ON TechnicalSupport.empID=Specializes.empID WHERE schedulerSystem=%s', (*args,))
-    print(results)
+    input_query = """
+        SELECT DigitalDisplay.serialNo, Specializes.modelNo,
+        TechnicalSupport.name
+        FROM DigitalDisplay INNER JOIN Specializes
+        ON DigitalDisplay.modelNo=Specializes.modelNo 
+        INNER JOIN TechnicalSupport 
+        ON TechnicalSupport.empID=Specializes.empID
+        WHERE schedulerSystem=%s
+    """
+
+    results = execute_query(connection, input_query, (*args,))
+    print_results(results)
 
 
 def question_3(connection, args: List):
@@ -159,39 +180,51 @@ def question_3(connection, args: List):
 def question_4(connection, args: List):
     assert len(args) == 1, two_param_message
 
-    results = execute_query(
-        connection, "SELECT * FROM Client WHERE phone=%s;", (*args,))
-    print(results)
+    input_query = """
+        SELECT * FROM Client WHERE phone=%s;
+    """
+    results = execute_query(connection, input_query, (*args,))
+    print_results(results)
 
 
 def question_5(connection, args: List):
     assert len(args) == 0, one_param_message
 
+    input_query = """
+        SELECT Administrator.empID, Administrator.name, AdmWorkHours.hours
+        FROM Administrator INNER JOIN AdmWorkHours
+        ON Administrator.empID=AdmWorkHours.empID
+        ORDER BY AdmWorkHours.hours ASC;
+    """
+
     results = execute_query(
-        connection, 'SELECT Administrator.empID, Administrator.name, AdmWorkHours.hours FROM Administrator INNER JOIN AdmWorkHours ON Administrator.empID=AdmWorkHours.empID ORDER BY AdmWorkHours.hours ASC;', ())
-    print(results)
+        connection,input_query , ())
+    print_results(results)
 
 
 def question_6(connection, args: List):
     assert len(args) == 1, two_param_message
 
-    results = execute_query(
-        connection, 'SELECT TechnicalSupport.name FROM TechnicalSupport INNER JOIN Specializes ON TechnicalSupport.empID=Specializes.empID WHERE Specializes.modelNo=%s;', (*args,))
-    print(results)
+    input_query = """
+        SELECT TechnicalSupport.name
+        FROM TechnicalSupport INNER JOIN Specializes 
+        ON TechnicalSupport.empID=Specializes.empID
+        WHERE Specializes.modelNo=%s;
+    """
+    results = execute_query(connection, input_query, (*args,))
+    print_results(results)
 
 
 def question_7(connection, args: List):
-    """Question 7
-
-    Args:
-        connection ([type]): [description]
-        args (List): [description]
-    """
     assert len(args) == 0, one_param_message
-
-    results = execute_query(
-        connection, 'SELECT Salesman.name, Purchases.commissionRate FROM Salesman INNER JOIN Purchases ON Salesman.empID=Purchases.empID ORDER BY Purchases.commissionRate DESC;', ())
-    print(results)
+    input_query = """
+        SELECT  Salesman.name, AVG(Purchases.commissionRate), Purchases.empId 
+        FROM Salesman INNER JOIN Purchases ON Salesman.empID=Purchases.empID
+        GROUP BY Purchases.empId
+        ORDER BY AVG(Purchases.commissionRate) DESC;
+    """
+    results = execute_query(connection, input_query, ())
+    print_results(results)
 
 
 def question_8(connection, args: List):
@@ -231,21 +264,10 @@ if __name__ == "__main__":
 
     # This initiates the connection to the DB on the CS machines.
     # To use on your own instance replace the user_name and insert a password
-    # DO NOT push this file to github with your password in here. Make sure you remove it first.
     connection = create_connection(
         "dbclass.cs.nmsu.edu", "zarafat", "Randomhack123_", "zarafat_482502fa20")
 
     mysql.connector.paramstyle = "format"
-
-    # print(mysql.connector.paramstyle)
-
-    # Test a simple select statement
-    # query_result = execute_query(connection, 'SELECT * FROM Salesman;', ())
-    # print(query_result)
-
-    # This will insert data to test the prepared statement
-    # query_result = execute_query(connection, 'INSERT INTO Video (VideoCode, videoLength) VALUES (%s, %s);', (2006, 43))
-    # print(query_result)
 
     question_no = sys.argv[1]
     other_args = sys.argv[2:]
