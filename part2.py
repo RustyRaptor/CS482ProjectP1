@@ -2,10 +2,10 @@
 """Project Part 2
 
 This program will take in as an argument the question number and then optionally
-other arguments needed by the question for inserts, updates, or deletes
+other arguments needed by the question for queries
 
 Example:
-        python3 part2.py 6 blah 420 blahblah 69
+        python3 part2.py 6 paramhere
 
 Attributes:
     module_level_variable1 (int): Module level variables may be documented in
@@ -191,10 +191,10 @@ def question_5(connection, args: List):
     assert len(args) == 0, one_param_message
 
     input_query = """
-        SELECT Administrator.empID, Administrator.name, AdmWorkHours.hours
-        FROM Administrator INNER JOIN AdmWorkHours
-        ON Administrator.empID=AdmWorkHours.empID
-        ORDER BY AdmWorkHours.hours ASC;
+        SELECT  Administrator.empId, Administrator.name, SUM(AdmWorkHours.hours)  
+        FROM  Administrator INNER JOIN AdmWorkHours ON AdmWorkHours.empID=Administrator.empID
+        GROUP BY AdmWorkHours.empId
+        ORDER BY SUM(AdmWorkHours.hours) ASC;
     """
 
     results = execute_query(
@@ -257,10 +257,7 @@ q_dict = {
 }
 
 # Command line arguments can be passed and read from sys.argv as a python list of strings
-if __name__ == "__main__":
-    # print(f"Arguments count: {len(sys.argv)}")
-    # for i, arg in enumerate(sys.argv):
-    #     print(f"Argument {i:>6}: {arg}")
+def main():
 
     # This initiates the connection to the DB on the CS machines.
     # To use on your own instance replace the user_name and insert a password
@@ -282,3 +279,8 @@ if __name__ == "__main__":
     except:
         print(
             RED + "Something unexpected happened with the program check your params" + END)
+
+
+
+if __name__ == "__main__":
+    main()
