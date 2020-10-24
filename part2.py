@@ -107,7 +107,7 @@ def execute_query(connection_obj: mysql.connector.MySQLConnection, query: str,
 
         print("Query executed successfully")
     except Error as e:
-        print(f"The error '{e}' occurred")
+        print(f"{RED}The error '{e}' occurred {END}")
         print(cursor.statement)
     if type(result) == list and len(result) == 0:
         result = [("NO RESULT",)]
