@@ -15,6 +15,7 @@ q1 :
 	echo -e "${RED}---------------------------------------------------------------------------${END}"
 	python3 part2.py 1 "Peruvian Paso"  
 	python3 part2.py 1 "Streamwood" 
+	python3 part2.py 1 "Nicholls Ave" 
 	echo -e "\n\n"
 q2 :
 	echo -e "${RED}Question 2 Tests${END}"
