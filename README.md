@@ -33,10 +33,26 @@
 
 The `<args>` is a space separated list of questions to answer. Has to be numbers between 1 and 8 inclusive.
 
-## Notes
+### Notes
 
 * We were unable to reach Brandon throughout the course of our work on Part 2 of this project. He did not contribute to part 2.
+
 
 ### Assumptions
 
 1. The program assumes that inserted commissionRate value is average commission rate.
+
+
+## Setup PHP
+
+1. Login to your CS machine account. 
+2. in your home folder create a folder called `public_html`
+	- `mkdir ~/public_html`
+3. Setup the folder permissions for that folder
+	- `chmod 0711 public_html`
+4. Also setup folder perms for your home folder because that wasn't enough aparently.
+	- `chmod 0711 ~/`
+5. Copy all the files under `/php` in the git repo into the `public_html` folder 
+	- open `https://www.cs.nmsu.edu/~<your_user_name>` in your browser.
+	- example `https://www.cs.nmsu.edu/~zarafat` for Ziad's
+6. It should work now. You can also test using an html file. 
