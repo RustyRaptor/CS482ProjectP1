@@ -12,4 +12,3 @@ else{
 	echo "Connection sucessful!";
 }
 $conn->close();
-?>

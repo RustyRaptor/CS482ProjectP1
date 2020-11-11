@@ -46,7 +46,7 @@ The `<args>` is a space separated list of questions to answer. Has to be numbers
 ## Setup PHP
 
 ### The Easy Way (using the makefile ziad made)
-```
+```bash
 make setup_php --silent
 ```
 
@@ -68,5 +68,5 @@ make setup_php --silent
 ## Deploy our code
 1. Make changes to the PHP code in the repo
 2. Commit your changes
-3. `make php_deploy --silent`
+3. `make deploy_php --silent`
 
