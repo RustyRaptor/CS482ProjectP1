@@ -198,7 +198,7 @@ def question_5(connection, args: List):
     """
 
     results = execute_query(
-        connection,input_query , ())
+        connection, input_query, ())
     print_results(results)
 
 
@@ -257,13 +257,15 @@ q_dict = {
 }
 
 # Command line arguments can be passed and read from sys.argv as a python list of strings
+
+
 def main():
 
     # This initiates the connection to the DB on the CS machines.
     # To use on your own instance replace the user_name and insert a password
     connection = create_connection(
         "dbclass.cs.nmsu.edu", "zarafat", "Randomhack123_", "zarafat_482502fa20")
-
+    
     mysql.connector.paramstyle = "format"
 
     question_no = sys.argv[1]
@@ -279,7 +281,6 @@ def main():
     except:
         print(
             RED + "Something unexpected happened with the program check your params" + END)
-
 
 
 if __name__ == "__main__":
