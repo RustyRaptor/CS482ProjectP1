@@ -1,6 +1,19 @@
 <html>
 <body>
 <title>ABC media</title>
+<script>
+src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+</script>
+<script>
+$(document.ready(function(){
+	$("#modelNo").click(function(){
+		$("p").hide();
+	});
+	$("#modelNo").click(function(){
+		$("p").show();
+	});
+});
+</script>
 <?php
 $servername = $_GET["servername"];
 $username = $_GET["username"];
@@ -43,15 +56,12 @@ else{
 		while($r2 = $result2->fetch_assoc()){
 ?>
 <tr>
-		<form action="model_page.php" method="get">
-			<td><input type="submit" value="<?php echo $r2["modelNo"];?>"</button></td>
-		</form>
+			<td><button id="modelNo" value="<?php echo $r2["modelNo"];?>"</button></td>
 </tr>
+<p>Hide Me!!</p>
 <?php
 		}
 	}
-	#if(isset($_POST["modelNo"])){
-	#	echo "i am here";
 	#	$query3 = "select * from Model where modelNo=" . $result2["modelNo"] . ";";
 	#	$result3 = $conn->query($query3) or die(mysqli_error($conn));
 	#	if($result3->num_rows > 0){
