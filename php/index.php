@@ -1,17 +1,15 @@
 <html>
 <body>
 <title>ABC media</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-</script>
-<script>
-$(document.ready(function(){
-	$("#modelNo").click(function(){
-		$("p").hide();
-	});
-	$("#modelNo").click(function(){
-		$("p").show();
-	});
+$(document).ready(function(){
+  $("#hide").click(function(){
+    $("p").hide();
+  });
+  $("#show").click(function(){
+    $("p").show();
+  });
 });
 </script>
 <?php
@@ -50,15 +48,32 @@ else{
 <?php
 	$query2 = "select modelNo from DigitalDisplay;";
 	$result2 = $conn->query($query2) or die(mysqli_error($conn));
-	#$query3 = "select * from Model where modelNo=" . $r2["modelNo"];
-	#$result3 = $conn->query($query3) or die(mysqli_error($conn));
 	if($result2->num_rows > 0){
 		while($r2 = $result2->fetch_assoc()){
 ?>
 <tr>
-			<td><button id="modelNo" value="<?php echo $r2["modelNo"];?>"</button></td>
+			<td><?php echo $r2["modelNo"];?></td>
+			<p><?php $modelno = $r2["modelNo"];
+			         $query3 = "select * from Model where modelNo=$modelno;";
+				 $result3 = $conn->query($query3) or die(mysqli_error($conn));
+				 if($result2->num_rows > 0){
+					 while($r3 = $result3->fetch_assoc()){
+?>
+<tr>
+						<td><?php echo $r3["modelNo"];?></td>
+						<td><?php echo $r3["width"];?></td>
+						<td><?php echo $r3["height"];?></td>
+						<td><?php echo $r3["weight"];?></td>
+						<td><?php echo $r3["screenSize"];?></td>
 </tr>
-<p>Hide Me!!</p>
+</p>
+<?php
+					 }
+				 }
+?>
+			<td><button id="hide">Hide</button></td>
+			<td><button id="show">Show</button></td>
+</tr>
 <?php
 		}
 	}
