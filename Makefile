@@ -66,4 +66,3 @@ setup_php:
 	mkdir ~/public_html || chmod 0711 ~/public_html || chmod 0711 ~/
 	echo -e "THIS IS A TEST" > ~/public_html/test.html
 	echo -e "${RED} If you want to test the web server go to https://www.cs.nmsu.edu/~${USER} in a web browser ${END}"
-	sh crabrave/crabrave.sh
