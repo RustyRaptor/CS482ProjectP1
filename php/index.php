@@ -84,22 +84,42 @@ $(document).ready(function(){
 	<input type="text" name="system"><br>
 	<input type="submit"><input type="reset">
 </form>
+<h2>Insert a new display below. Make sure to input a unique serial number, and make sure that if your model number is not listed above, that you input the correct model information as well. Otherwise, your insertion will fail!</h2>
+<form action="insert_display.php" method="get">
+        Serial number<input type="text" name="serialNo"><br>
+        Scheduler system<input type="text" name="schedulerSystem"><br>
+	Model number<input type="text" name="modelNo"<br>
+	
+	<b>Insert relevant info (sans model number) for the model below.</b><br>
+	Width<input type="text" name="width"><br>
+	Height<input type="text" name="height"><br>
+	Weight<input type="text" name="weight"><br>
+	Depth<input type="text" name="depth"><br>
+	Screen size<input type="text" name="screenSize"><br>
+	<input type="submit"<input type="reset">
+</form>
 <?php
-	#$system = $_GET["system"];
-	#echo $system;
-#$query4 = "select * from DigitalDisplay where schedulerSystem=$system;";
-#$result4 = $conn->query($query4) or die(mysqli_error($conn));
-#if($result4->num_rows > 0){
-#	while($r4 = $result4->fetch_assoc()){
+#	$query6 = "INSERT INTO `Model` (`modelNo`, `width`, `height`, `weight`, `depth`, `screenSize`)
+#		VALUES ('1045',40.00, 0.00, 643.00, 9999.99, 9999.99);";
+#	$result6 = $conn->query($query6) or die(mysqli_error($conn));
+#	$query5 = "insert into `DigitalDisplay` (`serialNo`, `schedulerSystem`, `modelNo`)
+#		values ('8002', 'Random', '1045');";
+#	$result5 = $conn->query($query5) or die(mysqli_error($conn));
+#	$query7 = "select * from DigitalDisplay;";
+#	$result7 = $conn->query($query7) or die(mysqli_error($conn));
+#	if($result7->num_rows > 0){
+ #                       while($r7 = $result7->fetch_assoc()){
 ?>
 <tr>
-		<td><?php echo $r4["serialNo"];?></td>
-                <td><?php echo $r4["schedulerSystem"];?></td>
-		<td><?php echo $r4["modelNo"];?></td>
+                                <td><?php echo $r7["serialNo"];?></td>
+                                <td><?php echo $r7["schedulerSystem"];?></td>
+                                <td><?php echo $r7["modelNo"];?></td>
+                                <td><?php echo nl2br("\n");?></td>
 </tr>
 <?php
-#	}
-#}
+#                        }
+ #               }
+
 ?>
 </body>
 </html>
