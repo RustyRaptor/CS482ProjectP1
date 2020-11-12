@@ -28,14 +28,31 @@ else{
 <tr>
 				<td><?php echo $r["serialNo"];?></td>
 				<td><?php echo $r["schedulerSystem"];?></td>
-				<td><?php echo $r["modelNo"];?></td>
+				<form action="" method="POST">
+				<td><input type="submit" name"modelNo" value="<?php echo $r["modelNo"];?>"/><br></td>
+				</form>
 				<td><?php echo nl2br("\n");?></td>
 </tr>
 <?php
 			}
 		}
+		if($_SERVER['REQUEST_METHOD'] === 'POST'){
+			if(isset($_POST['modelNo'])){
+				$aquery = "select * from Model;";
+				$qresult = $conn->aquery($aquery) or die(mysqli_error($conn));
+				while($qr = $qresult->fetch_assoc()){
+?>					<h3>Information for selected model number:</h3>
+					<td><?php echo $r["modelNo"];?></td>
+					<td><?php echo $r["width"];?></td>
+					<td><?php echo $r["height"];?></td>
+					<td><?php echo $r["depth"];?></td>
+					<td><?php echo $r["screenSize"];?></td>
+<?php
+				}
+			}
+		}
 		else{
-			echo "No displays to show.";
+			echo "sorry buddy";
 		}
 ?>
 </body>
