@@ -1,8 +1,8 @@
 <?php
-$servername = $_GET["servername"];
-$username = $_GET["username"];
-$password = $_GET["password"];
-$dbname = $_GET["dbname"];
+$servername = "dbclass.cs.nmsu.edu";
+$username = "bmoffett";
+$password = "7z4Yv0bJ";
+$dbname = "bmoffett_482502fa20";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error){

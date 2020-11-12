@@ -5,10 +5,8 @@ require_once('connection.php');
 <body>
 <h1>Search results</h1>
 <?php
-echo $_GET;
 $system = $_GET["system"];
-$query = "select * from DigitalDisplay where schedulerSystem='$system';";
-echo $query;
+$query = "select * from DigitalDisplay;";
 #result isn't getting set properly for some reason
 $result = $conn->query($query) or die(mysqli_error($conn));
 echo $result;
