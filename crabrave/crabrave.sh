@@ -22,4 +22,4 @@ echo FUCK PHP
 sleep 0.2
 done
 
-killall vlc
+# killall vlc
