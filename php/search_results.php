@@ -1,11 +1,17 @@
+<?php
+require_once('connection.php');
+?>
 <html>
 <body>
 <h1>Search results</h1>
 <?php
+echo $_GET;
 $system = $_GET["system"];
-	$query = "select * from DigitalDisplay where schedulerSystem='$system';";
+$query = "select * from DigitalDisplay where schedulerSystem='$system';";
+echo $query;
 #result isn't getting set properly for some reason
 $result = $conn->query($query) or die(mysqli_error($conn));
+echo $result;
 #var_dump($query, $result);
 		if($result->num_rows > 0){
 			while($r = $result->fetch_assoc()){
