@@ -64,6 +64,7 @@ else{
 						<td><?php echo $r3["width"];?></td>
 						<td><?php echo $r3["height"];?></td>
 						<td><?php echo $r3["weight"];?></td>
+						<td><?php echo $r3["depth"];?></td>
 						<td><?php echo $r3["screenSize"];?></td>
 </tr>
 </p>
@@ -89,10 +90,28 @@ else{
                                                 <td><?php echo $r3["weight"];?></td>
 						<td><?php echo $r3["screenSize"];?></td>
 </tr>
+<h2>Search for a display</h3>
+<h5>Please input a scheduler system below.</h5>
+<form action="search_results.php" method="get">
+	<input type="text" name="system"><br>
+	<input type="submit"><input type="reset">
+</form>
 <?php
-#			}
-#		}
+	#$system = $_GET["system"];
+	#echo $system;
+#$query4 = "select * from DigitalDisplay where schedulerSystem=$system;";
+#$result4 = $conn->query($query4) or die(mysqli_error($conn));
+#if($result4->num_rows > 0){
+#	while($r4 = $result4->fetch_assoc()){
+?>
+<tr>
+		<td><?php echo $r4["serialNo"];?></td>
+                <td><?php echo $r4["schedulerSystem"];?></td>
+		<td><?php echo $r4["modelNo"];?></td>
+</tr>
+<?php
 #	}
+#}
 ?>
 </body>
 </html>
