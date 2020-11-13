@@ -16,7 +16,7 @@ $(document).ready(function(){
 });
 </script>
 <h3>Displays</h3>
-SerialNo Scheduler ModelNo
+SerialNo Scheduler ModelNo<br>
 -----------------------------<br>
 <?php
 	$query = "select * from DigitalDisplay;";
