@@ -16,6 +16,8 @@ $(document).ready(function(){
 });
 </script>
 <h3>Displays</h3>
+SerialNo Scheduler ModelNo
+-----------------------------<br>
 <?php
 	$query = "select * from DigitalDisplay;";
 	$result = $conn->query($query) or die(mysqli_error($conn));
@@ -32,7 +34,7 @@ $(document).ready(function(){
 			}
 		}
 ?>
-<h2>Click on a model number below to show that model number's information.</h2>
+<h2>Click on a model number below to show that model number's information. If you would like to delete a display from the list, enter it's model number in the "delete" field below.</h2>
 <?php
 	$query2 = "select modelNo from DigitalDisplay;";
 	$result2 = $conn->query($query2) or die(mysqli_error($conn));
@@ -66,30 +68,31 @@ $(document).ready(function(){
 <?php
 		}
 	}
-	#	$query3 = "select * from Model where modelNo=" . $result2["modelNo"] . ";";
-	#	$result3 = $conn->query($query3) or die(mysqli_error($conn));
-	#	if($result3->num_rows > 0){
-	#		while($r3 = $result3->fetch_assoc()){
 ?>
-<tr>
-				<td><?php echo $r3["modelNo"];?></td>
-                                                <td><?php echo $r3["width"];?></td>
-                                                <td><?php echo $r3["height"];?></td>
-                                                <td><?php echo $r3["weight"];?></td>
-						<td><?php echo $r3["screenSize"];?></td>
-</tr>
+<b>Update a display by entering the model number you wish to update and the new model number below.</b><br>
+<form action="update_display.php" method="get">
+	Old model number:<input type="text" name="original"><br>
+	New model number:<input type="text" name="upd8"><br>
+	<input type="submit" value="Update"><input type="reset">
+</form>
+<b>Delete a display by entering the model number below.</b><br>
+<form action="delete_display.php" method="get">
+	<input type="text" name="delmodelNo"><br>
+	<input type="submit" value="Delete"><input type="reset">
+</form>
 <h2>Search for a display</h3>
 <h5>Please input a scheduler system below.</h5>
 <form action="search_results.php" method="get">
 	<input type="text" name="system"><br>
 	<input type="submit"><input type="reset">
 </form>
+<?php echo nl2br("\n");?>
 <h2>Insert a new display below. Make sure to input a unique serial number, and make sure that if your model number is not listed above, that you input the correct model information as well. Otherwise, your insertion will fail!</h2>
 <form action="insert_display.php" method="get">
         Serial number<input type="text" name="serialNo"><br>
         Scheduler system<input type="text" name="schedulerSystem"><br>
 	Model number<input type="text" name="modelNo"<br>
-	
+	<?php echo nl2br("\n");?>	
 	<b>Insert relevant info (sans model number) for the model below.</b><br>
 	Width<input type="text" name="width"><br>
 	Height<input type="text" name="height"><br>
