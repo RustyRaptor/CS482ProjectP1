@@ -5,3 +5,6 @@ if (!function_exists('mysqli_init') && !extension_loaded('mysqli')) {
     echo 'Phew we have it!';
 }
 ?>
+<form action="logout.php" method="get">
+    LOGOUT: <input type="submit">
+</form>
