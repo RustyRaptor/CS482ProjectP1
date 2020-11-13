@@ -1,3 +1,5 @@
+<html>
+<body>
 <?php
 $servername = $_GET["servername"];
 $username = $_GET["username"];
@@ -10,6 +12,8 @@ if ($conn->connect_error){
 }
 else{
         echo "Welcome to the database " . $username;
-        echo nl2br("\n");
+	echo nl2br("\n");
 }
 ?>
+</body>
+</html>

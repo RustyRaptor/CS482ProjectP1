@@ -1,8 +1,5 @@
 <html>
 <body>
-<?php
-require_once('connection.php');
-?>
 <h1>Deletion page</h1>
 <?php
 $delmodel = $_GET["delmodelNo"];
