@@ -1,8 +1,13 @@
+<?php
+require_once('connection.php');
+?>
 <html>
 <body>
 <h1>Deletion page</h1>
 <?php
 $delmodel = $_GET["delmodelNo"];
+$rmcheck = "SET FOREIGN_KEY_CHECKS=0;";
+$rmgood = $conn->query($rmcheck) or die(mysqli_error($conn));
 $query = "delete from DigitalDisplay where modelNo='$delmodel';";
 $result = $conn->query($query) or die(mysqli_error($conn));
 $query2 = "select modelNo from Model where modelNo='$delmodel';";
@@ -11,6 +16,8 @@ $query3 = "delete from Model where modelNo='$delmodel';";
 if($result2->num_rows === 0){
 	$result3 = $conn->query($query3) or die(mysqli_error($conn));
 }
+$setcheck = "SET FOREIGN_KEY_CHECKS=1;";
+$setresult = $conn->query($setcheck) or die(mysqli_error($conn));
 $query4 = "select * from DigitalDisplay;";
 $result4 = $conn->query($query4) or die(mysqli_error($conn));
 $query5 = "select * from Model;";

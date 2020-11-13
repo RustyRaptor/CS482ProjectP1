@@ -1,5 +1,3 @@
-<html>
-<body>
 <?php
 $servername = $_GET["servername"];
 $username = $_GET["username"];
@@ -15,5 +13,3 @@ else{
 	echo nl2br("\n");
 }
 ?>
-</body>
-</html>

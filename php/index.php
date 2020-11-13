@@ -1,17 +1,5 @@
 <?php
-$servername = $_GET["servername"];
-$username = $_GET["username"];
-$password = $_GET["password"];
-$dbname = $_GET["dbname"];
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error){
-        die("Connection failed. Reason: " . $conn->connect_error);
-}
-else{
-        echo "Welcome to the database " . $username;
-        echo nl2br("\n");
-}
+require_once('connection.php');
 ?>
 <html>
 <body>
@@ -86,17 +74,29 @@ SerialNo Scheduler ModelNo<br>
 	Old model number:<input type="text" name="original"><br>
 	New model number:<input type="text" name="upd8"><br>
 	<input type="submit" value="Update"><input type="reset">
+    <input type="hidden" name="servername" value="<?php echo $_GET["servername"] ?>">
+    <input type="hidden" name="username" value="<?php echo $_GET["username"] ?>">
+    <input type="hidden" name="password" value="<?php echo $_GET["password"] ?>">
+    <input type="hidden" name="dbname" value="<?php echo $_GET["dbname"] ?>">
 </form>
 <b>Delete a display by entering the model number below.</b><br>
 <form action="delete_display.php" method="get">
 	<input type="text" name="delmodelNo"><br>
 	<input type="submit" value="Delete"><input type="reset">
+    <input type="hidden" name="servername" value="<?php echo $_GET["servername"] ?>">
+    <input type="hidden" name="username" value="<?php echo $_GET["username"] ?>">
+    <input type="hidden" name="password" value="<?php echo $_GET["password"] ?>">
+    <input type="hidden" name="dbname" value="<?php echo $_GET["dbname"] ?>">
 </form>
 <h2>Search for a display</h3>
 <h5>Please input a scheduler system below.</h5>
 <form action="search_results.php" method="get">
 	<input type="text" name="system"><br>
 	<input type="submit"><input type="reset">
+    <input type="hidden" name="servername" value="<?php echo $_GET["servername"] ?>">
+    <input type="hidden" name="username" value="<?php echo $_GET["username"] ?>">
+    <input type="hidden" name="password" value="<?php echo $_GET["password"] ?>">
+    <input type="hidden" name="dbname" value="<?php echo $_GET["dbname"] ?>">
 </form>
 <?php echo nl2br("\n");?>
 <h2>Insert a new display below. Make sure to input a unique serial number, and make sure that if your model number is not listed above, that you input the correct model information as well. Otherwise, your insertion will fail!</h2>
@@ -112,6 +112,10 @@ SerialNo Scheduler ModelNo<br>
 	Depth<input type="text" name="depth"><br>
 	Screen size<input type="text" name="screenSize"><br>
 	<input type="submit"<input type="reset">
+    <input type="hidden" name="servername" value="<?php echo $_GET["servername"] ?>">
+    <input type="hidden" name="username" value="<?php echo $_GET["username"] ?>">
+    <input type="hidden" name="password" value="<?php echo $_GET["password"] ?>">
+    <input type="hidden" name="dbname" value="<?php echo $_GET["dbname"] ?>">
 </form>
 <?php
 #	$query6 = "INSERT INTO `Model` (`modelNo`, `width`, `height`, `weight`, `depth`, `screenSize`)

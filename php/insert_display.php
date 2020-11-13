@@ -1,3 +1,6 @@
+<?php
+require_once('connection.php');
+?>
 <html>
 <body>
 <?php
@@ -20,7 +23,7 @@ $query3 = "select * from DigitalDisplay;";
 $result3 = $conn->query($query3) or die(mysqli_error($conn));
 if($result3->num_rows > 0){
 ?>
-<b>Insertion successful. Check below to make sure your display appears below!</b>
+<b>Insertion successful. Check below to make sure your display appears below!</b><br>
 <?php
                         while($r = $result3->fetch_assoc()){
 ?>
