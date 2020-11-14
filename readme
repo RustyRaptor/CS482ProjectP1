@@ -1,0 +1,15 @@
+How to deploy out website.
+
+Unzip the folder. There are two options. You can manually copy the contents of /php into the public_html
+or alternatively you can use our makefile
+
+Using the makefile
+
+This command will setup our database to it's default state:
+make setup
+
+This command will setup the CS machine's public_html folder as per instructions
+make setup_php
+
+this command will deploy the php files and other files
+make deploy_php
