@@ -44,7 +44,7 @@ require_once('connection.php');
         ?>
         <b>Please hit the back button in your browser to return to the main page.</b>
         <form action="logout.php" method="get">
-                <button type="submit" class="btn btn-primary">Log Out</button>
+                <button type="submit" class="btn btn-danger">Log Out</button>
         </form>
 
 </html>
