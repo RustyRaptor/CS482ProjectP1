@@ -256,7 +256,7 @@ require_once('connection.php');
 	<div class="container">
 
 		<form action="logout.php" method="get">
-			<button type="submit" class="btn btn-danger">Log Out</button>
+			<button type="submit" class="btn btn-danger btn-lg">Log Out</button>
 		</form>
 	</div>
 </body>

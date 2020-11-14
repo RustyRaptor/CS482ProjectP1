@@ -18,7 +18,8 @@ create table Model (
     weight		numeric(6, 2),
     depth		numeric(6, 2),
     screenSize	numeric(6, 2),
-    primary key (modelNo)
+    primary key (modelNo) 
+
 );
 
 # Creating table for site.
@@ -38,7 +39,7 @@ create table DigitalDisplay (
     schedulerSystem		char(10),
     modelNo				char(10),
     primary key (serialNo),
-    foreign key (modelNo) references Model (modelNo),
+    foreign key (modelNo) references Model (modelNo) ON UPDATE CASCADE ON DELETE SET NULL,
     # Validates scheduler system to be random, smart, or virtue.
     constraint CHK_scheduler_system check (schedulerSystem in ('Random', 'Smart', 'Virtue'))
 );
@@ -102,15 +103,15 @@ create table AdmWorkHours (
 	empId	int,
     day		date,
     hours	numeric(4, 2),
-    foreign key (empId) references Administrator (empId)
+    foreign key (empId) references Administrator (empId) ON UPDATE CASCADE ON DELETE SET NULL
 );
 
 # Creating table for broadcasts.
 create table Broadcasts (
 	videoCode	int,
     siteCode	int,
-    foreign key (videoCode) references Video (videoCode),
-    foreign key (siteCode) references Site (siteCode)
+    foreign key (videoCode) references Video (videoCode) ON UPDATE CASCADE ON DELETE CASCADE,
+    foreign key (siteCode) references Site (siteCode) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 # Creating table for administers.
@@ -118,7 +119,7 @@ create table Administers (
 	empId		int,
 	siteCode	int,
     foreign key (empId) references Administrator (empId),
-    foreign key (siteCode) references Site (siteCode)
+    foreign key (siteCode) references Site (siteCode) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 # Creating table for specializes.
@@ -126,7 +127,7 @@ create table Specializes (
 	empId		int,
     modelNo		char(10),
     foreign key (empId) references TechnicalSupport( empId),
-    foreign key (modelNo) references Model (modelNo)
+    foreign key (modelNo) references Model (modelNo) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 # Creating table for purchases.
@@ -137,13 +138,13 @@ create table Purchases (
     commissionRate	numeric(4, 2),
     foreign key (clientId) references Client (clientId),
     foreign key (empId) references Salesman (empId),
-    foreign key (packageId) references AirtimePackage (packageId)
+    foreign key (packageId) references AirtimePackage (packageId) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 # Creating table for locates.
 create table Locates (
 	serialNo	char(10),
     siteCode	int,
-    foreign key (serialNo) references DigitalDisplay (serialNo),
-    foreign key (siteCode) references Site (siteCode)
+    foreign key (serialNo) references DigitalDisplay (serialNo)  ON UPDATE CASCADE ON DELETE CASCADE,
+    foreign key (siteCode) references Site (siteCode) 
 );
