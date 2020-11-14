@@ -168,7 +168,7 @@ require_once('connection.php');
 			<fieldset>
 				<div class="form-group">
 					<label for="exampleInputEmail1">SerialNo to delete</label>
-					<input type="text" class="form-control" placeholder="Enter ModelNO here" name="delSerialNo">
+					<input type="text" class="form-control" placeholder="Enter Serial Number here" name="delSerialNo">
 				</div>
 				<button type="submit" class="btn btn-primary">Delete</button>
 				<button type="reset" class="btn btn-primary">Reset</button>

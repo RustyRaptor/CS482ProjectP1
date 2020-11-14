@@ -22,7 +22,7 @@ require_once('connection.php');
 	$result7 = $conn->query($query7) or die(mysqli_error($conn));
 	$modelnohold = $result7->fetch_assoc();
 	$modelno = $modelnohold["modelNo"];
-	$query = "delete from DigitalDisplay where modelNo='$delSerial';";
+	$query = "delete from DigitalDisplay where serialNo='$delSerial';";
 	$result = $conn->query($query) or die(mysqli_error($conn));
 	$query6 = "select modelNo from DigitalDisplay where serialNo='$delSerial';";
 	$result6 = $conn->query($query6) or die(mysqli_error($conn));
