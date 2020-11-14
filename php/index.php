@@ -130,12 +130,21 @@ require_once('connection.php');
 		<form action="update_display.php" method="get">
 			<fieldset>
 				<div class="form-group">
-					<label for="exampleInputEmail1">Old model number:</label>
-					<input type="text" class="form-control" placeholder="Enter old model no here" name="original">
+					<label for="exampleInputEmail1">Serial Number to update:</label>
+					<input type="text" class="form-control" placeholder="Enter serial number here to be updated" name="original">
+				</div>
+				<hr>
+				<div class="form-group">
+					<label for="exampleInputEmail1">New serial number</label>
+					<input type="text" class="form-control" placeholder="Enter new serial number here if no change just use the old one" name="serialupd8">
 				</div>
 				<div class="form-group">
 					<label for="exampleInputEmail1">New model number</label>
-					<input type="text" class="form-control" placeholder="Enter new ModelNo here" name="upd8">
+					<input type="text" class="form-control" placeholder="Enter new ModelNo here if no change just use the old one" name="upd8">
+				</div>
+				<div class="form-group">
+					<label for="exampleInputEmail1">New Scheduler System</label>
+					<input type="text" class="form-control" placeholder="Enter new ModelNo here if no change just use the old one" name="sched8">
 				</div>
 
 
@@ -151,15 +160,15 @@ require_once('connection.php');
 	<div class="container">
 		<h2>Delete</h2>
 		<div class="alert alert-dismissible alert-success">
-			Delete a display by entering the model number below.
+			Delete a display by entering the serial number below.
 
 		</div>
 
 		<form action="delete_display.php" method="get">
 			<fieldset>
 				<div class="form-group">
-					<label for="exampleInputEmail1">ModelNo to delete</label>
-					<input type="text" class="form-control" placeholder="Enter ModelNO here" name="delmodelNo">
+					<label for="exampleInputEmail1">SerialNo to delete</label>
+					<input type="text" class="form-control" placeholder="Enter ModelNO here" name="delSerialNo">
 				</div>
 				<button type="submit" class="btn btn-primary">Delete</button>
 				<button type="reset" class="btn btn-primary">Reset</button>
@@ -198,10 +207,43 @@ require_once('connection.php');
 	<div class="container">
 		<h2>Insert New</h2>
 		<div class="alert alert-dismissible alert-success">
-			Insert a new display below. Make sure to input a unique serial number, and make sure that if your model number is not listed above, that you input the correct model information as well. Otherwise, your insertion will fail!
+			Insert a new display below. Make sure to input a unique serial number, and make sure that if your model number is not listed <b>below</b>, that you input the correct model information as well. Otherwise, your insertion will fail!
 		</div>
 
-		<form action="search_results.php" method="get">
+		<?php
+
+		$getmodelquery = "SELECT modelNo from Model;";
+
+		$getmodelresults = $conn->query($getmodelquery) or die(mysqli_error($conn));
+		echo "
+		<table class=\"table table-hover\">
+			<thead>
+				<tr>
+					<th scope=\"col\">ModelNo</th>
+				</tr>
+			</thead>
+			<tbody>
+		";
+		if ($getmodelresults->num_rows > 0) {
+			while ($gmr = $getmodelresults->fetch_assoc()) {
+				$model = $gmr["modelNo"];
+				echo "
+				<tr class=\"table-primary\">
+					<td>$model</td>
+				</tr>
+				";
+			}
+		}
+
+		echo "
+			</tr>
+			</tbody>
+			</table>
+		";
+
+		?>
+
+		<form action="insert_display.php" method="get">
 			<fieldset>
 				<div class="form-group">
 					<label for="exampleInputEmail1">Serial Number</label>

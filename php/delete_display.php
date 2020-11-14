@@ -12,20 +12,27 @@ require_once('connection.php');
 </head>
 
 <body>
+	<div class="jumbotron">
 	<h1>Deletion page</h1>
 	<?php
-	$delmodel = $_GET["delmodelNo"];
+	$delSerial = $_GET["delSerialNo"];
 	// $rmcheck = "SET FOREIGN_KEY_CHECKS=0;";
 	// $rmgood = $conn->query($rmcheck) or die(mysqli_error($conn));
-	$query = "delete from DigitalDisplay where modelNo='$delmodel';";
+	$query7 = "select modelNo from DigitalDisplay where serialNo='$delSerial';";
+	$result7 = $conn->query($query7) or die(mysqli_error($conn));
+	$modelnohold = $result7->fetch_assoc();
+	$modelno = $modelnohold["modelNo"];
+	$query = "delete from DigitalDisplay where modelNo='$delSerial';";
 	$result = $conn->query($query) or die(mysqli_error($conn));
-	$query6 = "select modelNo from DigitalDisplay where modelNo='$delmodel';";
+	$query6 = "select modelNo from DigitalDisplay where serialNo='$delSerial';";
 	$result6 = $conn->query($query6) or die(mysqli_error($conn));
 	if ($result6->num_rows === 0) {
-		$query3 = "delete from Model where modelNo='$delmodel';";
+		$query3 = "delete from Model where modelNo='$modelNo';";
 		$result3 = $conn->query($query3) or die(mysqli_error($conn));
 	}
-	$query2 = "select modelNo from Model where modelNo='$delmodel';";
+
+
+	$query2 = "select modelNo from Model where modelNo='$modelno';";
 	$result2 = $conn->query($query2) or die(mysqli_error($conn));
 
 	$setcheck = "SET FOREIGN_KEY_CHECKS=1;";
@@ -71,6 +78,7 @@ require_once('connection.php');
 		}
 	}
 	?>
+	</div>
 	<div class="alert alert-dismissible alert-info">
 		Click back in your browser to return to the main page
 	</div>

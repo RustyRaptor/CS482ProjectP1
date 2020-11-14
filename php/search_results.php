@@ -12,31 +12,45 @@ require_once('connection.php');
 </head>
 
 <body>
+	<div class="jumbotron">
 	<h1>Search results</h1>
-	<?php
-	$system = $_GET["system"];
-	$query = "select * from DigitalDisplay where schedulerSystem='$system';";
-	#result isn't getting set properly for some reason
-	$result = $conn->query($query) or die(mysqli_error($conn));
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col">SerialNo</th>
+				<th scope="col">Scheduler</th>
+				<th scope="col">ModelNo</th>
+			</tr>
+		</thead>
+		<tbody>
 
-	#var_dump($query, $result);
-	if ($result->num_rows > 0) {
-		while ($r = $result->fetch_assoc()) {
-			// Store each one in a variable
-			$sn = $r["serialNo"];
-			$ss = $r["schedulerSystem"];
-			$mn = $r["modelNo"];
-			// Insert them into the table
-			echo "<tr>
-				<td>$sn</td>
-				<td>$ss</td>
-				<td>$mn</td>
-				<td><br></td>
+
+			<?php
+			$system = $_GET["system"];
+			$query = "select * from DigitalDisplay where schedulerSystem='$system';";
+			#result isn't getting set properly for some reason
+			$result = $conn->query($query) or die(mysqli_error($conn));
+
+			#var_dump($query, $result);
+			if ($result->num_rows > 0) {
+				while ($r = $result->fetch_assoc()) {
+					// Store each one in a variable
+					$sn = $r["serialNo"];
+					$ss = $r["schedulerSystem"];
+					$mn = $r["modelNo"];
+					// Insert them into the table
+					echo "
+			<tr class=\"table-primary\">
+							<td>$sn</td>
+							<td>$ss</td>
+							<td>$mn</td>
 			</tr>";
-		}
-	}
-	?>
-
+				}
+			}
+			?>
+		</tbody>
+	</table>
+	</div>
 	<div class="alert alert-dismissible alert-info">
 		Click back in your browser to return to the main page
 	</div>
