@@ -1,14 +1,68 @@
 <!DOCTYPE html>
 <html>
+
+<head>
+	<title> ABC Media </title>
+	<link rel="stylesheet" href="./bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+
+</head>
+
 <body>
-<title> ABC Media </title>
-<h1>Welcome! Please enter your login information below.</h1>
-<form action="index.php" method="get">
-	Server name: <input type="text" name="servername"><br>
-	Username:    <input type="text" name="username"><br>
-	Password:    <input type="text" name="password"><br>
-	Database name: <input type="text" name="dbname"><br>
-	<input type="submit"><input type="reset">
-</form>
+
+
+	<div class="jumbotron">
+		<h1>Welcome! Please enter your login information below.</h1>
+		<form action="index.php" method="get">
+			<fieldset>
+				<div class="form-group">
+					<label for="exampleInputEmail1">Server Name:</label>
+					<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+						placeholder="Enter server address" name="servername">
+				</div>
+				<div class="form-group">
+					<label for="exampleInputEmail1">Username:</label>
+					<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+						placeholder="Enter your username" name="username">
+				</div>
+				<div class="form-group">
+					<label for="exampleInputPassword1">Password:</label>
+					<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+						name="password">
+				</div>
+
+				<div class="form-group">
+					<label for="exampleInputEmail1">Database Name:</label>
+					<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+						placeholder="Enter database name" name="dbname">
+				</div>
+
+				<button type="submit" class="btn btn-primary">Submit</button>
+				<button type="reset" class="btn btn-primary">Reset</button>
+			</fieldset>
+		</form>
+	</div>
+
+	<p>
+		<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample"
+			aria-expanded="false" aria-controls="collapseExample">
+			Button with data-target
+		</button>
+	</p>
+	<div class="collapse" id="collapseExample">
+		<div class="card card-body">
+			Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim
+			keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+		</div>
+	</div>
 </body>
+
 </html>

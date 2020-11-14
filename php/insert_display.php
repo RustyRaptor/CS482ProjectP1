@@ -4,6 +4,7 @@ require_once('connection.php');
 <html>
 
 <body>
+        <b>Insertion successful. Check below to make sure your display appears below!</b><br>
         <?php
         $serialNo = $_GET["serialNo"];
         $schedulerSystem = $_GET["schedulerSystem"];
@@ -23,25 +24,27 @@ require_once('connection.php');
         $query3 = "select * from DigitalDisplay;";
         $result3 = $conn->query($query3) or die(mysqli_error($conn));
         if ($result3->num_rows > 0) {
-        ?>
-                <b>Insertion successful. Check below to make sure your display appears below!</b><br>
-                <?php
+
                 while ($r = $result3->fetch_assoc()) {
-                ?>
+                        $serno = $r["serialNo"];
+                        $schedsys = $r["schedulerSystem"];
+                        $modno = $r["modelNo"];
+
+                        echo "
                         <tr>
-                                <td><?php echo $r["serialNo"]; ?></td>
-                                <td><?php echo $r["schedulerSystem"]; ?></td>
-                                <td><?php echo $r["modelNo"]; ?></td>
-                                <td><?php echo nl2br("\n"); ?></td>
+                                <td>$serno</td>
+                                <td>$schedsys</td>
+                                <td>$modno</td>
+                                <td><br></td>
                         </tr>
-        <?php
+                        ";
                 }
         }
 
         ?>
         <b>Please hit the back button in your browser to return to the main page.</b>
         <form action="logout.php" method="get">
-                LOGOUT: <input type="submit">
+                <button type="submit" class="btn btn-primary">Log Out</button>
         </form>
 
 </html>

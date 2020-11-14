@@ -6,5 +6,5 @@ if (!function_exists('mysqli_init') && !extension_loaded('mysqli')) {
 }
 ?>
 <form action="logout.php" method="get">
-    LOGOUT: <input type="submit">
+    <button type="submit" class="btn btn-primary">Log Out</button>
 </form>

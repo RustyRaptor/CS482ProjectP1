@@ -31,7 +31,7 @@ require_once('connection.php');
 
 	<h5>Please <b>SMASH THAT MF</b> back button on your browser to return to the main page.</h5>
 	<form action="logout.php" method="get">
-		LOGOUT: <input type="submit">
+		<button type="submit" class="btn btn-primary">Log Out</button>
 	</form>
 </body>
 

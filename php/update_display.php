@@ -4,6 +4,9 @@ require_once('connection.php');
 <html>
 
 <body>
+	<b>Update successful. Make sure your updated model number is in the list below!</b><br>
+	SerialNo Scheduler ModelNo<br>
+	------------------------------<br>
 	<?php
 	$original = $_GET["original"];
 	$update = $_GET["upd8"];
@@ -18,25 +21,24 @@ require_once('connection.php');
 	$setgood = $conn->query($setcheck) or die(mysqli_error($conn));
 	$result3 = $conn->query($query3) or die(mysqli_error($conn));
 	if ($result3->num_rows > 0) {
-	?>
-		<b>Update successful. Make sure your updated model number is in the list below!</b><br>
-		SerialNo Scheduler ModelNo<br>
-		------------------------------<br>
-		<?php
 		while ($r3 = $result3->fetch_assoc()) {
-		?>
+			$serialno = $r3["serialNo"];
+			$schedsys = $r3["schedulerSystem"];
+			$modnum = $r3["modelNo"];
+			echo "
 			<tr>
-				<td><?php echo $r3["serialNo"]; ?></td>
-				<td><?php echo $r3["schedulerSystem"]; ?></td>
-				<td><?php echo $r3["modelNo"]; ?></td><br>
-		<?php
+				<td>$serialno</td>
+				<td>$schedsys</td>
+				<td>$modnum</td><br>
+			</tr>
+			";
 		}
 	}
-		?>
+	?>
 
-		<form action="logout.php" method="get">
-			LOGOUT: <input type="submit">
-		</form>
+	<form action="logout.php" method="get">
+		<button type="submit" class="btn btn-primary">Log Out</button>
+	</form>
 </body>
 
 </html>
