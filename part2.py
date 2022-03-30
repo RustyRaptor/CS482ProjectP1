@@ -264,7 +264,7 @@ def main():
     # This initiates the connection to the DB on the CS machines.
     # To use on your own instance replace the user_name and insert a password
     connection = create_connection(
-        "dbclass.cs.nmsu.edu", "zarafat", "Randomhack123_", "zarafat_482502fa20")
+        "dbclass.cs.nmsu.edu", "yourusername", "yourpassword", "nameofdatabase")
     
     mysql.connector.paramstyle = "format"
 
